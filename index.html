@@ -1,0 +1,3276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=cffe1d81-6890-429f-8b3d-c77630781128
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta id="statusBarMeta" name="apple-mobile-web-app-status-bar-style" content="default">
+<meta id="themeColorMeta" name="theme-color" content="#000000">
+<title>Sonder星诗</title>
+<link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="data:image/png;base64,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">
+<style>
+  :root {
+    --bg-dark: #000000;
+    --key-size: min(22vw, 96px);
+    --time-top: 40px;
+    --date-top: 10px;
+    --time-size: 108px;
+    --time-weight: 600;
+    --time-font: -apple-system, "SF Pro Display", "SF Pro", system-ui, sans-serif;
+    --time-color: #ffffff;
+    --text-shadow-color: rgba(0, 0, 0, 0.4);
+    --btn-bottom: 40px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  .font-sfpro { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; }
+  .font-sfpro-rounded { font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif; }
+  .font-newyork { font-family: "New York", "Georgia", ui-serif, serif; }
+  .font-sfmono { font-family: "SF Mono", "Courier New", ui-monospace, monospace; }
+  .font-stencil { font-family: "SF Pro Stencil", -apple-system, BlinkMacSystemFont, sans-serif; }
+  .font-slab { font-family: "SF Slab", ui-slab, serif; }
+
+  html, body {
+    height: 100%; width: 100%; margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    background-color: #000; color: #fff; overflow: hidden;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    -webkit-text-size-adjust: 100%;
+  }
+  input, select, textarea, button { font-size: 16px !important; font-family: inherit; }
+
+  .app-page {
+    position: fixed; inset: 0; z-index: 1;
+    opacity: 0; visibility: hidden; transform: translateY(12px);
+    transition: opacity .26s ease, transform .28s ease, visibility .26s;
+  }
+  .app-page.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  /* ================= 主界面 ================= */
+  #homePage {
+    background: #000; z-index: 2;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 18px 16px 24px;
+  }
+  .home-wrap {
+    width: 400px; max-width: 100%; text-align: center;
+    padding-top: 8px;
+  }
+  .home-logo {
+    width: 76px; height: 76px; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 20px;
+    background: #050608;
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 0 26px rgba(255,255,255,.06), inset 0 0 20px rgba(255,255,255,.03);
+  }
+  .home-logo svg { width: 42px; height: 42px; fill: #f2f6ff; filter: drop-shadow(0 0 8px rgba(255,255,255,.35)); }
+  .home-title {
+    margin: 0 0 6px; font-size: 24px; font-weight: 700; letter-spacing: 3px;
+    background: linear-gradient(90deg, #e8eefc, #ffffff, #e8eefc);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 30px rgba(255,255,255,.12);
+  }
+  .home-sub { margin: 0 0 24px; font-size: 12.5px; letter-spacing: 1.5px; color: #6b7280; }
+  .menu { display: flex; flex-direction: column; gap: 16px; padding-top: 6px; }
+  .menu-item {
+    display: flex; align-items: center; gap: 16px; width: 100%;
+    padding: 22px 20px; text-align: left; color: #e6ecf7;
+    cursor: pointer; background: #050608;
+    border: 1px solid rgba(255,255,255,.12); border-radius: 18px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.65);
+    transition: transform .15s ease, border-color .2s ease;
+    font-family: inherit;
+  }
+  .menu-item:active { transform: scale(.975); }
+  .menu-item .ico {
+    flex: 0 0 auto; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+    border-radius: 14px;
+    background: linear-gradient(155deg, #14181f 0%, #0a0c10 100%);
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 6px 14px rgba(0,0,0,.45);
+    color: #dbe6f7;
+  }
+  .menu-item .ico svg { width: 25px; height: 25px; }
+  .menu-item .txt { flex: 1; min-width: 0; }
+  .menu-item .txt b { display: block; font-size: 17px; font-weight: 600; letter-spacing: 1.2px; color: #f0f4fb; }
+  .menu-item .arrow { flex: 0 0 auto; font-size: 19px; color: #3f4652; }
+
+  /* ================= 锁屏页面 ================= */
+  #lockPage { z-index: 3; background: #000; }
+  #lockScreen {
+    position: absolute; inset: 0;
+    background-color: #000; background-size: cover; background-position: center; background-repeat: no-repeat;
+    touch-action: pan-y; -webkit-user-select: none;
+  }
+  #lockDate {
+    position: absolute; top: var(--date-top); left: 50%; transform: translateX(-50%); width: max-content;
+    color: var(--time-color); font-size: 18px; font-weight: 500;
+    text-shadow: 0 1px 4px var(--text-shadow-color); pointer-events: auto;
+  }
+  #lockTime {
+    position: absolute; top: var(--time-top); left: 50%; transform: translateX(-50%); width: max-content;
+    font-size: var(--time-size); font-weight: var(--time-weight); letter-spacing: -2px;
+    font-family: var(--time-font); color: var(--time-color);
+    text-shadow: 0 2px 6px var(--text-shadow-color); pointer-events: auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .lock-buttons {
+    position: absolute; bottom: calc(env(safe-area-inset-bottom) + var(--btn-bottom));
+    left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 35px; z-index: 10;
+  }
+  .circle-btn {
+    width: 66px; height: 66px; flex-shrink: 0; border-radius: 50%;
+    background: rgba(40, 40, 40, 0.4); backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex; justify-content: center; align-items: center;
+    color: var(--time-color); cursor: pointer;
+  }
+  .circle-btn:active { background: rgba(80, 80, 80, 0.6); transform: scale(0.95); }
+  .circle-btn svg { width: 28px; height: 28px; fill: currentColor; }
+  .lock-buttons.light-mode .circle-btn { background: rgba(255,255,255,0.55); border-color: rgba(0,0,0,0.08); }
+
+  /* 锁屏 / 主屏右上角退出按钮：视觉上隐藏，长按返回功能保留（右上角同位置可长按） */
+  .kb-foot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .kb-foot .kb-hint, #kbHint { display: none !important; }
+  .kb-lib-pick { display: none; margin-left: auto; }
+  .kb-lib-pick.show { display: flex; }
+  .kb-lib-select {
+    flex: 0 0 auto;
+    width: 186px;
+    max-width: 62%;
+    text-align: center;
+    padding: 8px 6px 8px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #cfe0fb;
+    background: #0b0e13;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 10px;
+  }
+  .kb-blackout {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 60;
+  }
+  .kb-blackout.on { opacity: 1; }
+  .preset-current {
+    font-size: 14px;
+    color: #7fd1ff;
+    max-width: 60%;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #lockExitBtn, #mainExitBtn {
+    position: absolute;
+    top: max(14px, env(safe-area-inset-top));
+    right: 14px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: transparent;
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 50;
+    cursor: pointer;
+    color: transparent;
+    font-size: 11px;
+    opacity: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #lockExitBtn.hold, #mainExitBtn.hold {
+    opacity: .92;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.45);
+    color: rgba(255,255,255,.85);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.18), 0 2px 10px rgba(0,0,0,.35);
+    animation: lockExitPulse .8s ease-out forwards;
+  }
+  /* 切到后台/离开页面时整屏灭掉，回来后恢复 */
+  #screenBlackout {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+  }
+  #screenBlackout.on { opacity: 1; }
+
+  @keyframes lockExitPulse {
+    0% { transform: scale(1); }
+    70% { transform: scale(1.06); }
+    100% { transform: scale(1.06); box-shadow: 0 0 0 7px rgba(255,255,255,.05), 0 2px 10px rgba(0,0,0,.35); }
+  }
+
+  #screen { display: none; position: absolute; inset: 0; z-index: 10; background-color: #000; }
+  .screen-bg {
+    position: absolute; inset: 0; background-color: #000; background-size: cover; background-position: center; background-repeat: no-repeat;
+    display: flex; flex-direction: column; align-items: center; padding-top: 15vh;
+  }
+  .screen-bg::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); pointer-events: none; }
+  .screen-bg.light-mode::after { background: rgba(255,255,255,0.2); }
+  .title { font-size: 20px; font-weight: 500; margin: 0 0 4vh 0; z-index: 2; opacity: 0.9; color: #fff; }
+  .dots { display: flex; gap: 16px; margin-bottom: 6vh; z-index: 2; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; transition: all 0.18s; }
+  .dot.filled { background: #fff; border-color: #fff; transform: scale(1.05); }
+  .keypad { width: min(400px, 82vw); display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; justify-items: center; z-index: 2; }
+  .key {
+    width: var(--key-size); height: var(--key-size); border-radius: 50%; background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center; flex-direction: column; color: #fff;
+    position: relative; overflow: hidden; transition: all 0.12s; cursor: pointer;
+  }
+  .key .num { font-size: calc(var(--key-size) / 2.6); z-index: 3; pointer-events: none; }
+  .key .letters { font-size: 10px; margin-top: 6px; opacity: 0.6; font-weight: 300; letter-spacing: 0.5px; z-index: 3; pointer-events: none; }
+  .key:active, .key.active { background: rgba(255,255,255,0.25); transform: scale(0.88); }
+  .key::before {
+    content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+    border-radius: 50%; background: rgba(255,255,255,0.4);
+    transform: translate(-50%, -50%); transition: width 0s, height 0s; pointer-events: none; z-index: 1;
+  }
+  .key.active::before {
+    width: calc(var(--key-size) * 1.5); height: calc(var(--key-size) * 1.5);
+    transition: width 0.15s ease-out, height 0.15s ease-out;
+  }
+  .key::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 3px 6px rgba(0,0,0,0.15); pointer-events: none; z-index: 2;
+  }
+  .bottom-actions { width: min(400px, 82vw); display: flex; justify-content: space-between; margin-top: 6vh; font-size: 16px; color: rgba(255,255,255,0.9); z-index: 2; }
+  .screen-bg.light-mode .title, .screen-bg.light-mode .bottom-actions { color: #000; }
+  .screen-bg.light-mode .dot { border-color: rgba(0,0,0,0.35); }
+  .screen-bg.light-mode .dot.filled { background: #000; border-color: #000; }
+  .screen-bg.light-mode .key { background: rgba(0,0,0,0.08); color: #000; }
+  .screen-bg.light-mode .key:active, .screen-bg.light-mode .key.active { background: rgba(0,0,0,0.18); }
+  .screen-bg.light-mode .key::before { background: rgba(0,0,0,0.15); }
+
+  #mainscreen { position: absolute; inset: 0; z-index: 60; display: none; background-color: #000; background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .jump-area { position: absolute; z-index: 70; background: transparent; }
+  @keyframes breathe { 0%{ transform: scale(1) } 50%{ transform: scale(1.01) } 100%{ transform: scale(1) } }
+  #mainscreen.breathe { animation: breathe 6s ease-in-out infinite; }
+
+  /* ================= 键盘模式页面（纯黑底） ================= */
+  #keyboardPage { z-index: 2; background: #000; }
+  #keyboardPage.active { display: flex; justify-content: center; }
+  .kb-scroll {
+    width: 100%; max-height: 100vh; overflow-y: auto;
+    display: flex; align-items: center; justify-content: center;
+    padding: 64px 16px 32px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .kb-back-btn {
+    position: fixed; top: max(14px, env(safe-area-inset-top)); left: 14px;
+    z-index: 40;
+    display: flex; align-items: center; gap: 6px;
+    padding: 9px 15px 9px 11px;
+    font-size: 13px; letter-spacing: 1px;
+    color: #cfe0fb; cursor: pointer;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+  .kb-back-btn:active { transform: scale(.95); }
+  .kb-card {
+    width: 440px; max-width: 100%;
+    padding: 24px 24px 22px;
+    border-radius: 18px;
+    background: #050608;
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.7);
+  }
+  .kb-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+  .kb-head-left { display: flex; flex-direction: column; }
+  .kb-head h1 { margin: 0 0 3px; font-size: 18px; font-weight: 600; letter-spacing: 2px; color: #e4eefb; }
+  .kb-sub { margin: 0; font-size: 11.5px; color: #6b7280; letter-spacing: 1px; }
+
+  /* 文本替换开关（右侧对称） */
+  .kb-map-toggle {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .kb-map-toggle .label {
+    font-size: 11.5px; color: #9db4dc; letter-spacing: .5px;
+  }
+  .kb-map-switch {
+    position: relative; width: 40px; height: 22px;
+    border-radius: 11px;
+    background: #1a222e;
+    border: 1px solid rgba(255,255,255,.14);
+    transition: background .22s ease, border-color .22s ease;
+    flex-shrink: 0;
+  }
+  .kb-map-switch::after {
+    content: '';
+    position: absolute; left: 2px; top: 2px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #6b7280;
+    transition: transform .22s ease, background .22s ease;
+  }
+  .kb-map-switch.on {
+    background: #ffffff;
+    border-color: #ffffff;
+  }
+  .kb-map-switch.on::after {
+    transform: translateX(18px);
+    background: #000;
+  }
+
+  .kb-display { display: flex; justify-content: center; gap: 8px; margin: 18px 0 16px; }
+  .kb-slot {
+    flex: 1 1 0; min-width: 0; max-width: 54px; height: 62px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: var(--slot-fs, 30px); font-weight: 700;
+    color: #fff; background: #0a0d13;
+    border: 1.5px solid rgba(255,255,255,.14);
+    border-radius: 10px; overflow: hidden;
+    transition: all .18s ease;
+  }
+  .kb-slot.active { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,.12); }
+  .kb-slot.filled { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,255,255,.15); }
+  .kb-map-preview { display: none; margin: -6px 0 14px; text-align: center; font-size: 12.5px; color: #9db4dc; line-height: 1.6; word-break: break-all; }
+  .kb-map-preview.show { display: block; }
+  .kb-map-preview .arrow { color: #ffffff; margin: 0 6px; }
+  .kb-map-preview .result { color: #ffffff; font-weight: 600; }
+  .kb-map-preview .miss { color: #d9a557; }
+  .kb-countdown { display: none; margin-bottom: 16px; }
+  .kb-countdown.show { display: block; }
+  .kb-cd-text { font-size: 12.5px; color: #9db4dc; margin-bottom: 8px; }
+  .kb-cd-text b { color: #ffffff; font-size: 16px; font-weight: 700; }
+  .kb-progress { height: 5px; border-radius: 3px; background: #10151c; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+  .kb-progress i { display: block; height: 100%; width: 100%; border-radius: 3px; background: #ffffff; }
+
+  .kb-btn-row { display: flex; gap: 10px; }
+  button.kb-main, button.kb-ghost {
+    padding: 14px; font-size: 15px; font-weight: 600; letter-spacing: 2px;
+    color: #000; border: none; border-radius: 11px; cursor: pointer;
+    font-family: inherit;
+  }
+  button.kb-main {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+  }
+  button.kb-main:active { transform: scale(.97); }
+  button.kb-main.listening { background: #ff5a5a; border-color: #ff5a5a; color: #fff; }
+  button.kb-ghost {
+    display: none; flex: 0 0 44%; font-size: 13.5px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+  .kb-hint { margin: 14px 0 0; font-size: 11.5px; line-height: 1.6; color: #6b7280; text-align: center; min-height: 18px; word-break: break-all; }
+
+  /* 三个快捷控件 */
+  .kb-quick-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .kb-quick-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    color: #cfe0fb;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    transition: background .18s ease, border-color .18s ease;
+    min-height: 58px;
+  }
+  .kb-quick-btn:active { background: rgba(255,255,255,0.1); transform: scale(.97); }
+  .kb-quick-btn .qb-label {
+    font-size: 10.5px;
+    color: #6b7280;
+    letter-spacing: .5px;
+  }
+  .kb-quick-btn .qb-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* ================= 设置面板（全屏 · 四大分区） ================= */
+  #settings {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    z-index: 99999; background: #000;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0s linear 0.3s;
+  }
+  #settings.show {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0s;
+  }
+
+  /* 顶部导航 */
+  .ios-nav-header {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: calc(env(safe-area-inset-top) + 12px) 16px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    background: #000; flex-shrink: 0;
+  }
+  .nav-btn.back-btn {
+    justify-self: start;
+    display: flex; align-items: center; gap: 5px;
+    padding: 9px 14px 9px 10px;
+    font-size: 13px; letter-spacing: 1px;
+    color: #cfe0fb;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  }
+  .nav-btn.back-btn:active { transform: scale(.95); }
+  .nav-btn.done-btn { justify-self: end; color: #fff; font-weight: 600; }
+  .ios-title { font-size: 17px; font-weight: 600; color: #fff; }
+  .nav-btn {
+    background: none; border: none; color: #fff;
+    font-size: 15px; cursor: pointer; padding: 5px;
+  }
+  .nav-btn.close-btn {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: #ccc;
+  }
+  .nav-btn.done-btn { font-weight: 600; }
+  .ios-icon-close {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.12);
+    font-size: 13px; color: #8fb4dc; cursor: pointer;
+  }
+
+  /* ================= 顶部四个大类（手风琴，内容挂在卡片下方） ================= */
+  .top-menu-grid {
+    display: flex; flex-direction: column;
+    gap: 12px;
+    flex: 1; overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%; max-width: 640px; align-self: center;
+    padding: 16px 20px calc(env(safe-area-inset-bottom) + 24px);
+    background: #000;
+  }
+  .menu-section {
+    flex: 0 0 auto;
+    background: #0a0d13;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .22s ease, background .22s ease;
+  }
+  .menu-section.active {
+    background: #12161d;
+    border-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0,0,0,.5);
+  }
+  .menu-card {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .menu-card:active { background: rgba(255,255,255,.05); }
+  .menu-card-title { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+  .menu-card-arrow { font-size: 16px; color: #666; transition: transform 0.2s, color .2s; }
+  .menu-card.active .menu-card-arrow { color: #fff; transform: rotate(90deg); }
+
+  /* ================= 内容区域（在卡片正下方展开） ================= */
+  .content-area {
+    display: none;
+    padding: 0 14px 14px;
+  }
+  .content-area.active {
+    display: block;
+    animation: fadeIn 0.28s ease;
+  }
+  .content-area .ios-category { margin-top: 10px; }
+  .content-area .ios-category:first-child { margin-top: 0; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 内部小分类 */
+  .ios-category {
+    margin-top: 16px;
+    background: #0a0d13;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .ios-category-toggle {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px; cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+  .ios-category.open .ios-category-toggle { border-bottom-color: rgba(255,255,255,.06); }
+  .ios-cat-title { font-size: 14.5px; font-weight: 600; color: #fff; }
+  .ios-category-toggle .caret { font-size: 10px; color: #666; transition: transform .2s ease; }
+  .ios-category.open .ios-category-toggle .caret { transform: rotate(180deg); }
+  .ios-category-body { display: none; }
+  .ios-category.open .ios-category-body { display: block; }
+
+  /* 行 */
+  .ios-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; min-height: 48px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: 14px; color: #a8c4e0;
+  }
+  .ios-row:last-child { border-bottom: none; }
+  .ios-row.col { flex-direction: column; align-items: flex-start; }
+  .ios-row.col > span:first-child { margin-bottom: 10px; color: #7e99b8; }
+
+  /* 开关 */
+  .switch {
+    width: 48px; height: 28px;
+    background: #1a222e;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.25s, border-color 0.25s;
+    flex-shrink: 0; cursor: pointer;
+  }
+  .switch .knob {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #4d6a8a;
+    position: absolute; left: 2px; top: 2px;
+    transition: transform 0.25s, background 0.25s;
+  }
+  .switch.on { background: #fff; border-color: #fff; }
+  .switch.on .knob { transform: translateX(20px); background: #000; }
+
+  /* 分段控件 */
+  .segmented-control {
+    display: inline-flex; background: #020406;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px; padding: 3px; flex-wrap: wrap;
+  }
+  .segmented-control label {
+    padding: 6px 12px; font-size: 13px; font-weight: 500;
+    border-radius: 8px; transition: all 0.2s; color: #666; cursor: pointer;
+  }
+  .segmented-control input { display: none; }
+  .segmented-control label:has(input:checked) { background: #fff; color: #000; }
+
+  /* 输入框 */
+  .ios-text-input {
+    border: 1px solid rgba(255,255,255,.12);
+    background: #020406;
+    padding: 10px 12px; border-radius: 10px; outline: none;
+    font-size: 15px !important; width: 100%; color: #fff;
+  }
+  .ios-select {
+    font-size: 15px !important; padding: 8px 12px; border-radius: 10px;
+    outline: none; border: 1px solid rgba(255,255,255,.12);
+    background: #020406; color: #fff;
+  }
+  .ios-btn {
+    width: 100%; padding: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer;
+  }
+  .ios-btn.primary { background: #fff; border-color: #fff; color: #000; }
+
+  .small-hint { font-size: 12px; color: #666; padding: 0 16px 12px; line-height: 1.5; }
+
+  /* 缩略图 */
+  .mockup-row { display: flex; gap: 12px; justify-content: space-around; padding: 16px; }
+  .mockup-item { text-align: center; }
+  .mockup-box {
+    width: 80px; height: 155px; border-radius: 12px;
+    background: #0a1017; background-size: cover; background-position: center; background-repeat: no-repeat;
+    border: 2px solid rgba(255,255,255,.15); cursor: pointer;
+  }
+  .mockup-label { font-size: 12px; margin-top: 6px; color: #666; }
+
+  /* 预设列表 */
+  .preset-add {
+    display: flex; gap: 8px; padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .preset-add input {
+    flex: 1; min-width: 0; padding: 8px 10px;
+    font-size: 15px !important; color: #fff; background: #020406;
+    border: 1px solid rgba(255,255,255,.12); border-radius: 8px; outline: none;
+  }
+  .preset-add button {
+    flex: 0 0 auto; padding: 0 16px;
+    font-size: 13px; font-weight: 600; color: #000; background: #fff;
+    border: 1px solid #fff; border-radius: 8px; cursor: pointer;
+  }
+  .preset-list { max-height: 240px; overflow-y: auto; }
+  .preset-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    font-size: 13.5px; color: #a8c4e0;
+  }
+  .preset-item:last-child { border-bottom: none; }
+  .preset-item .pname { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .preset-item .purl { flex: 1; min-width: 0; font-size: 11px; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .preset-item .pbtn {
+    flex: 0 0 auto; width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: #888;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; cursor: pointer;
+  }
+  .preset-item .pbtn.del { color: #ff5a5a; }
+
+  /* 可视化排版编辑器 */
+  #layoutEditor {
+    position: fixed; inset: 0; z-index: 100001; display: none; flex-direction: column; justify-content: space-between;
+    background-color: rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  #layoutEditor.show { display: flex; }
+
+  .editor-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: calc(env(safe-area-inset-top) + 10px) 20px 10px 20px;
+    color: #fff; font-size: 17px; font-weight: 600; z-index: 10;
+  }
+  .editor-top button { background: none; border: none; color: #ffffff; font-size: 17px; cursor: pointer; }
+
+  .editor-preview { flex: 1; position: relative; overflow: hidden; }
+
+  .drag-item { position: absolute; cursor: grab; touch-action: none; white-space: nowrap; transition: outline 0.1s; border-radius: 8px; }
+  .drag-item.active { outline: 2px dashed #ffffff; background: rgba(255,255,255,0.1); }
+  .drag-item.time { left: 50%; transform: translateX(-50%); font-weight: 600; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+  .drag-item.date { left: 50%; transform: translateX(-50%); font-size: 18px; font-weight: 500; }
+  .drag-item.bottom { left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 35px; }
+
+  .fake-btn {
+    width: 66px; height: 66px; border-radius: 50%;
+    background: rgba(40, 40, 40, 0.4); border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+  }
+
+  .drag-hint {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.9); font-size: 13px; pointer-events: none;
+    background: rgba(0,0,0,0.6); padding: 6px 12px; border-radius: 12px;
+    display: none; align-items: center; gap: 5px; z-index: 99999;
+  }
+
+  .editor-controls {
+    background: rgba(10, 12, 16, 0.92); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    padding: 20px 20px calc(env(safe-area-inset-bottom) + 20px) 20px;
+    border-radius: 32px 32px 0 0; color: #fff;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); z-index: 10;
+    display: flex; flex-direction: column; gap: 15px;
+  }
+
+  .ctrl-top { display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 600; color: #EBEBF5; }
+
+  .font-scroller { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 5px; }
+  .font-scroller::-webkit-scrollbar { display: none; }
+  .font-item {
+    display: flex; align-items: center; justify-content: center;
+    width: 60px; height: 60px; border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    font-size: 26px; font-weight: 500;
+    white-space: nowrap; cursor: pointer; transition: all 0.2s;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+  }
+  .font-item.active { background: rgba(255,255,255,0.2); border-color: #ffffff; }
+
+  .slider-row { display: flex; align-items: center; gap: 15px; }
+  .slider-label { font-size: 13px; color: rgba(255,255,255,0.6); width: 30px; }
+  .slider-row input[type=range] { flex: 1; }
+
+  input[type=range] {
+    -webkit-appearance: none; height: 4px;
+    background: rgba(255,255,255,0.3); border-radius: 2px; outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px;
+    border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .color-scroller { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; padding: 5px 0; }
+  .color-scroller::-webkit-scrollbar { display: none; }
+  .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; }
+  .color-dot.active { border-color: #ffffff; }
+
+  #positionEditor {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 999999;
+    display: none; align-items: center; justify-content: center;
+  }
+  #positionEditor.show { display: flex; }
+  .editor-container {
+    background: #0a0d13;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: 20px;
+    width: 95%; height: 90%;
+    display: flex; flex-direction: column;
+    color: #fff;
+  }
+  .preview-area {
+    flex: 1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border: 2px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow: hidden;
+    background-color: #05080c;
+  }
+  .resizable-area {
+    position: absolute;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid #ffffff;
+    cursor: move;
+    min-width: 50px; min-height: 50px;
+  }
+  .resize-handle {
+    position: absolute;
+    width: 20px; height: 20px;
+    background: #ffffff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    bottom: -10px; right: -10px;
+    cursor: nwse-resize;
+  }
+
+  /* 选择弹层（键盘模式快捷控件用） */
+  .picker-pop {
+    position: fixed; inset: 0;
+    z-index: 100002;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(10px);
+  }
+  .picker-pop.show { display: flex; }
+  .picker-sheet {
+    width: 100%; max-width: 440px;
+    background: #0a0d13;
+    border: 1px solid rgba(255,255,255,.12);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    padding: 12px 14px calc(env(safe-area-inset-bottom) + 16px) 14px;
+    color: #dbe7f5;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .picker-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 6px 0 12px;
+    color: #ffffff;
+  }
+  .picker-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .picker-option {
+    padding: 12px 14px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #cfe0fb;
+    text-align: left;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .picker-option.active {
+    background: #ffffff;
+    color: #000;
+    border-color: #ffffff;
+    font-weight: 600;
+  }
+  .picker-option:active { opacity: .85; }
+</style>
+</head>
+<body>
+
+  <!-- 主界面 -->
+  <div class="app-page active" id="homePage">
+    <div class="home-wrap">
+      <div class="home-logo">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+      </div>
+      <h1 class="home-title">Sonder星诗</h1>
+      <p class="home-sub">Your life, your choice</p>
+      <div class="menu">
+        <button class="menu-item" id="btnLock" type="button">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="10.4" width="14.8" height="9.8" rx="2.6"/><path d="M8 10.4V7.6a4 4 0 0 1 8 0v2.8"/><circle cx="12" cy="15.3" r="1.5"/><path d="M12 16.8v1.6"/></svg></span>
+          <span class="txt"><b>锁屏模式</b></span>
+          <span class="arrow">›</span>
+        </button>
+        <button class="menu-item" id="btnKeyboard" type="button">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="6.6" width="18.8" height="10.8" rx="2.4"/><circle cx="6.2" cy="10.2" r=".7"/><circle cx="9.4" cy="10.2" r=".7"/><circle cx="12.6" cy="10.2" r=".7"/><circle cx="15.8" cy="10.2" r=".7"/><circle cx="18" cy="10.2" r=".7"/><circle cx="6.2" cy="13.6" r=".7"/><circle cx="9.4" cy="13.6" r=".7"/><path d="M12.2 13.6h5.8"/></svg></span>
+          <span class="txt"><b>键盘模式</b></span>
+          <span class="arrow">›</span>
+        </button>
+        <button class="menu-item" id="btnSettings" type="button">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+          <span class="txt"><b>设置</b></span>
+          <span class="arrow">›</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 锁屏页面 -->
+  <div class="app-page" id="lockPage">
+    <div id="lockScreen">
+      <div id="lockDate">加载中...</div>
+      <div id="lockTime">00:00</div>
+      <div class="lock-buttons">
+        <div class="circle-btn" id="flashlightBtn"><svg viewBox="0 0 24 24"><path d="M18 2H6v6l2 3v11h8V11l2-3V2zm-2 6.5l-2 2.8V20h-4v-8.7l-2-2.8V4h8v4.5z"/><rect x="10" y="14" width="4" height="2" rx="1"/></svg></div>
+        <div class="circle-btn" id="cameraBtn"><svg viewBox="0 0 24 24"><path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></div>
+      </div>
+      <div id="lockExitBtn">‹</div>
+    </div>
+
+    <div id="screen">
+      <div class="screen-bg" id="screenBg">
+        <h1 class="title" id="titleText">输入密码</h1>
+        <div id="dots" class="dots"></div>
+        <div id="keypad" class="keypad"></div>
+        <div class="bottom-actions">
+          <div id="emergency">紧急情况</div>
+          <div id="delete">取消</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainscreen">
+      <div class="jump-area" id="urlJumpArea"></div>
+      <div id="mainExitBtn">‹</div>
+    </div>
+
+    <input type="file" id="realCameraInput" accept="image/*" capture="environment" style="display:none;">
+  </div>
+
+  <!-- 键盘模式 -->
+  <div class="app-page" id="keyboardPage">
+    <button class="kb-back-btn" id="kbBackBtn" type="button">‹ 返回</button>
+    <div class="kb-scroll">
+      <div class="kb-card">
+        <div class="kb-head">
+          <div class="kb-head-left">
+            <h1>键盘模式</h1>
+          </div>
+          <div class="kb-map-toggle" id="kbBlackoutToggle">
+            <span class="label">黑屏</span>
+            <div class="kb-map-switch" id="kbBlackoutSwitch"></div>
+          </div>
+        </div>
+
+        <div class="kb-display" id="kbDisplay"></div>
+        <div class="kb-map-preview" id="kbMapPreview"></div>
+        <div class="kb-countdown" id="kbCountdown">
+          <div class="kb-cd-text" id="kbCdText"></div>
+          <div class="kb-progress"><i id="kbCdBar"></i></div>
+        </div>
+        <div class="kb-btn-row">
+          <button class="kb-main" id="kbStartBtn">开 始</button>
+          <button class="kb-ghost" id="kbJumpBtn">立即跳转</button>
+        </div>
+
+        <!-- 三个快捷控件 -->
+        <div class="kb-quick-row">
+          <button class="kb-quick-btn" id="qbLenBtn" type="button">
+            <span class="qb-label">密码位数</span>
+            <span class="qb-value" id="qbLenValue">4 位</span>
+          </button>
+          <button class="kb-quick-btn" id="qbTargetBtn" type="button">
+            <span class="qb-label">跳转目标</span>
+            <span class="qb-value" id="qbTargetValue">壁纸预言</span>
+          </button>
+          <button class="kb-quick-btn" id="qbDelayBtn" type="button">
+            <span class="qb-label">跳转时间</span>
+            <span class="qb-value" id="qbDelayValue">3 秒</span>
+          </button>
+        </div>
+
+        <div class="kb-foot">
+          <div class="kb-map-toggle" id="kbMapToggle">
+            <span class="label">文本替换</span>
+            <div class="kb-map-switch" id="kbMapSwitch"></div>
+          </div>
+          <div class="kb-lib-pick" id="kbLibPick">
+            <select id="kbLibSelect" class="kb-lib-select"></select>
+          </div>
+          <p class="kb-hint" id="kbHint"></p>
+        </div>
+      </div>
+    </div>
+    <div class="kb-blackout" id="kbBlackout"></div>
+  </div>
+
+  <!-- 可视化排版编辑器 -->
+  <div id="layoutEditor">
+    <div class="editor-top">
+      <button id="closeLayoutEditor">取消</button>
+      <span>调整时间与位置</span>
+      <button id="saveLayoutEditor" style="font-weight:700">完成</button>
+    </div>
+
+    <div class="editor-preview" id="editorPreview">
+      <div class="drag-item time" id="dragTime">00:00</div>
+      <div class="drag-item date" id="dragDate">11月13日 周五</div>
+      <div class="drag-hint" id="dragHint">拉动这个调大小和位置 ▼</div>
+      <div class="drag-item bottom" id="dragBottom">
+        <div class="fake-btn"></div>
+        <div class="fake-btn"></div>
+      </div>
+    </div>
+
+    <div class="editor-controls">
+      <div class="ctrl-top">
+        <span>字体与颜色</span>
+      </div>
+
+      <div class="font-scroller" id="fontScroller">
+        <div class="font-item font-sfpro" data-font="-apple-system, BlinkMacSystemFont, &quot;SF Pro Display&quot;, &quot;Helvetica Neue&quot;, sans-serif">12</div>
+        <div class="font-item font-sfpro-rounded" data-font="&quot;SF Pro Rounded&quot;, -apple-system, BlinkMacSystemFont, sans-serif">12</div>
+        <div class="font-item font-newyork" data-font="&quot;New York&quot;, &quot;Georgia&quot;, ui-serif, serif">12</div>
+        <div class="font-item font-sfmono" data-font="&quot;SF Mono&quot;, &quot;Courier New&quot;, ui-monospace, monospace">12</div>
+        <div class="font-item font-stencil" data-font="&quot;SF Pro Stencil&quot;, -apple-system, BlinkMacSystemFont, sans-serif">12</div>
+        <div class="font-item font-slab" data-font="&quot;SF Slab&quot;, ui-slab, serif">12</div>
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">大小</div>
+        <input type="range" id="szTime" min="60" max="150" value="108">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label">粗细</div>
+        <input type="range" id="fwTime" min="100" max="900" step="100" value="600">
+      </div>
+
+      <div class="color-scroller" id="colorScroller">
+        <div class="color-dot active" data-color="#ffffff" style="background:#ffffff;"></div>
+        <div class="color-dot" data-color="#000000" style="background:#000000;"></div>
+        <div class="color-dot" data-color="#ff3b30" style="background:#ff3b30;"></div>
+        <div class="color-dot" data-color="#007aff" style="background:#007aff;"></div>
+        <div class="color-dot" data-color="#34c759" style="background:#34c759;"></div>
+        <div class="color-dot" data-color="#ffcc00" style="background:#ffcc00;"></div>
+        <div class="color-dot" data-color="#af52de" style="background:#af52de;"></div>
+      </div>
+
+      <div class="ctrl-top" style="margin-top:5px; border-top:1px solid rgba(255,255,255,0.1); padding-top:15px;">
+        <span>显示日历（含农历）</span>
+        <div id="editorLunarSwitch" class="switch on"><div class="knob"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 统一设置面板（全屏 · 四大分区） -->
+  <div id="settings">
+    <!-- 顶部导航 -->
+    <div class="ios-nav-header">
+      <button id="closeSettings" class="nav-btn back-btn">‹ 返回</button>
+      <span class="ios-title">设置</span>
+      <button id="closeSettingsBottom" class="nav-btn done-btn">完成</button>
+    </div>
+    <!-- 顶部四个大按钮 -->
+    <div class="top-menu-grid">
+      <div class="menu-section">
+        <div class="menu-card" data-target="contentAppearance">
+          <div class="menu-card-title">外观设置</div>
+          <div class="menu-card-arrow">▶</div>
+        </div>
+        <div class="content-area" id="contentAppearance">
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">背景图片</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="mockup-row">
+                <div class="mockup-item">
+                  <div id="mockupLock" class="mockup-box" onclick="document.getElementById('lockImagePicker').click()"></div>
+                  <div class="mockup-label">锁屏底图</div>
+                </div>
+                <div class="mockup-item">
+                  <div id="mockupScreen" class="mockup-box" onclick="document.getElementById('bgFile').click()"></div>
+                  <div class="mockup-label">密码背景</div>
+                </div>
+                <div class="mockup-item">
+                  <div id="mockupMain" class="mockup-box" onclick="document.getElementById('mainFile').click()"></div>
+                  <div class="mockup-label">主屏图</div>
+                </div>
+              </div>
+              <input id="lockImagePicker" type="file" accept="image/*" style="display:none;">
+              <input id="bgFile" type="file" accept="image/*" style="display:none;">
+              <input id="mainFile" type="file" accept="image/*" style="display:none;">
+              <div style="padding: 0 16px 16px;">
+                <button class="ios-btn" onclick="clearAllImages()">移除所有图片</button>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">密码界面设置</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row col"><span>标题文字</span><input type="text" id="titleInput" class="ios-text-input" placeholder="输入密码" maxlength="20"></div>
+              <div class="ios-row col"><span>紧急情况按钮</span><input type="text" id="emergencyInput" class="ios-text-input" placeholder="紧急情况" maxlength="20"></div>
+              <div class="ios-row col"><span>删除按钮</span><input type="text" id="deleteInput" class="ios-text-input" placeholder="删除" maxlength="20"></div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">系统设置</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row col">
+                <span>外观模式</span>
+                <div class="segmented-control">
+                  <label><input type="radio" name="appTheme" value="light">浅色</label>
+                  <label><input type="radio" name="appTheme" value="dark" checked>深色</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">锁屏细节</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row"><span>自动复制密码</span><div id="autoSwitch" class="switch on"><div class="knob"></div></div></div>
+              <div class="ios-row"><span>主屏呼吸动画</span><div id="breatheSwitch" class="switch on"><div class="knob"></div></div></div>
+              <div class="ios-row"><span>输入完自动进主屏</span><div id="exitSwitch" class="switch on"><div class="knob"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-section">
+        <div class="menu-card" data-target="contentInput">
+          <div class="menu-card-title">输入设置</div>
+          <div class="menu-card-arrow">▶</div>
+        </div>
+        <div class="content-area" id="contentInput">
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">密码模式位数</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row">
+                <span>锁屏密码位数</span>
+                <div class="segmented-control">
+                  <label><input type="radio" name="len" value="4">4 位</label>
+                  <label><input type="radio" name="len" value="6" checked>6 位</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">键盘模式位数</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row col">
+                <span>键盘模式位数</span>
+                <div class="segmented-control" id="kbLenSegWrap" style="width:100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-section">
+        <div class="menu-card" data-target="contentMagic">
+          <div class="menu-card-title">预设设置</div>
+          <div class="menu-card-arrow">▶</div>
+        </div>
+        <div class="content-area" id="contentMagic">
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">魔术预设</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="preset-add">
+                <input id="presetShortcutInput" type="text" placeholder="添加新的魔术名称" maxlength="40">
+                <button type="button" id="presetShortcutAddBtn">添加</button>
+              </div>
+              <div class="preset-list" id="presetShortcutList"></div>
+              <div class="ios-row" style="display:none;">
+                <span>当前选中</span>
+                <select id="presetShortcutSelect" class="ios-select" style="max-width: 180px;"></select>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">index预设</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row">
+                <span>当前词库</span>
+                <select id="libSelect" class="ios-select" style="max-width: 180px;"></select>
+              </div>
+              <div class="preset-add">
+                <input id="mapKeyInput" type="text" placeholder="数字" maxlength="12" inputmode="numeric" style="flex: 0 0 80px;">
+                <input id="mapValInput" type="text" placeholder="替换文字" maxlength="40">
+                <button type="button" id="mapAddBtn">添加</button>
+              </div>
+              <div class="preset-list" id="mapList"></div>
+              <div class="ios-row" style="gap:8px;">
+                <button class="ios-btn" id="libRenameBtn" style="flex:1;">重命名词库</button>
+                <button class="ios-btn" id="libAddBtn" style="flex:1;">新建词库</button>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">URL预设</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="preset-add">
+                <input id="presetUrlNameInput" type="text" placeholder="网址名称" maxlength="40">
+                <button type="button" id="presetUrlAddBtn">添加</button>
+              </div>
+              <div class="preset-list" id="presetUrlList"></div>
+              <div class="ios-row" style="display:none;">
+                <span>当前选中</span>
+                <select id="presetUrlSelect" class="ios-select" style="max-width: 180px;"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-section">
+        <div class="menu-card" data-target="contentJump">
+          <div class="menu-card-title">跳转设置</div>
+          <div class="menu-card-arrow">▶</div>
+        </div>
+        <div class="content-area" id="contentJump">
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">管理跳转</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row col">
+                <span>跳转方式</span>
+                <div class="segmented-control" id="kbTypeSegSetting">
+                  <label><input type="radio" name="kbTypeSetting" value="none">无</label>
+                  <label><input type="radio" name="kbTypeSetting" value="shortcut" checked>魔术预设</label>
+                  <label><input type="radio" name="kbTypeSetting" value="url">网址预设</label>
+                </div>
+              </div>
+              <div class="ios-row" id="currentPresetRow"><span>当前预设</span>
+                <select id="currentPresetSelect" class="ios-select" style="max-width: 190px;"></select>
+              </div>
+              <div class="ios-row"><span>附加内容取前后（开启）</span><div id="kbAppendSwitch" class="switch on"><div class="knob"></div></div></div>
+              <div class="ios-row col" id="digitExtraRow">
+                <span>取位（前几位 / 后几位）</span>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                  <div class="segmented-control" id="digitModeSeg">
+                    <label><input type="radio" name="digitMode" value="all" checked>全部</label>
+                    <label><input type="radio" name="digitMode" value="first">前几位</label>
+                    <label><input type="radio" name="digitMode" value="last">后几位</label>
+                  </div>
+                  <select id="digitCountSelect" class="ios-select" style="max-width:92px;"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ios-category">
+            <div class="ios-category-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <div class="ios-cat-title">自动跳转时间设置</div>
+              <span class="caret">▼</span>
+            </div>
+            <div class="ios-category-body">
+              <div class="ios-row col">
+                <span>锁屏模式跳转时间（秒）</span>
+                <input type="number" id="lockJumpSeconds" class="ios-text-input" min="0" max="60" value="3">
+              </div>
+              <div class="ios-row col">
+                <span>键盘模式跳转时间（秒）</span>
+                <input type="number" id="kbDelaySetting" class="ios-text-input" min="0" max="60" value="3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 跳转区域编辑器 -->
+  <div id="positionEditor">
+    <div class="editor-container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <strong>设置跳转区域</strong>
+        <button id="closePositionEditor" class="ios-icon-close" style="background:rgba(255,255,255,0.1); color:#fff;">✕</button>
+      </div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.7); margin-bottom:10px;">在主屏预览图上拖动调整跳转区域的位置和大小</div>
+      <div class="preview-area" id="previewArea">
+        <div class="resizable-area" id="resizableArea"><div class="resize-handle"></div></div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:15px;">
+        <button id="savePosition" class="ios-btn primary" style="flex:1;">保存并关闭</button>
+        <button id="resetPosition" class="ios-btn" style="flex:1;">重置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 选择弹层 -->
+  <div class="picker-pop" id="pickerPop">
+    <div class="picker-sheet">
+      <div class="picker-title" id="pickerTitle">请选择</div>
+      <div class="picker-options" id="pickerOptions"></div>
+    </div>
+  </div>
+
+<script>
+(function() {
+  'use strict';
+
+  function showPage(id) {
+    ['homePage', 'lockPage', 'keyboardPage'].forEach(function(p) {
+      var el = document.getElementById(p);
+      if (el) el.classList.remove('active');
+    });
+    var target = document.getElementById(id);
+    if (target) target.classList.add('active');
+  }
+
+  /* ================= 锁屏配置 ================= */
+  var LOCK_KEY = 'lockscreen_v13_final';
+  var lockDefaults = {
+    autoCopy: true,
+    exitOnComplete: true,
+    breathe: true,
+    bgLock: null,
+    bgScreen: null,
+    bgMain: null,
+    appTheme: 'dark',
+    inputLength: 6,
+    showLunar: true,
+    timeColor: '#ffffff',
+    timeFont: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+    timeWeight: 600,
+    layout: { dateTop: 10, timeTop: 40, timeSize: 108, btnBottom: 40 },
+    customTexts: { title: '输入密码', emergency: '紧急情况', delete: '删除' },
+    mainScreenBehavior: {
+      returnMode: 'longpress',
+      urlMode: 'fixed',
+      fixedUrl: 'https://www.baidu.com',
+      dynamicUrlBase: '',
+      dynamicDigits: 6,
+      jumpArea: { x: 100, y: 100, width: 200, height: 80 },
+      lockJumpSeconds: 3,
+      autoJumpSeconds: 5
+    }
+  };
+
+  var lockConfig = {};
+  try { lockConfig = JSON.parse(localStorage.getItem(LOCK_KEY)) || {}; } catch(e) {}
+  lockConfig = Object.assign({}, lockDefaults, lockConfig);
+  if (!lockConfig.customTexts) lockConfig.customTexts = Object.assign({}, lockDefaults.customTexts);
+  if (!lockConfig.mainScreenBehavior) lockConfig.mainScreenBehavior = Object.assign({}, lockDefaults.mainScreenBehavior);
+  if (!lockConfig.mainScreenBehavior.jumpArea) lockConfig.mainScreenBehavior.jumpArea = Object.assign({}, lockDefaults.mainScreenBehavior.jumpArea);
+  if (!lockConfig.layout) lockConfig.layout = Object.assign({}, lockDefaults.layout);
+
+  window.savedPassword = '';
+
+  function saveLockConfig() {
+    try {
+      localStorage.setItem(LOCK_KEY, JSON.stringify(lockConfig));
+    } catch(e) {
+      if (e.name === 'QuotaExceededError' || e.code === 22) {
+        alert('本地存储空间已满！请尝试移除部分图片以释放空间。');
+      }
+    }
+  }
+
+  function updateLockTime() {
+    var now = new Date();
+    var timeEl = document.getElementById('lockTime');
+    var dateEl = document.getElementById('lockDate');
+    if (!timeEl || !dateEl) return;
+    timeEl.innerText = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    var weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    var baseDate = (now.getMonth() + 1) + '月' + now.getDate() + '日 ' + weekDays[now.getDay()];
+    dateEl.innerText = lockConfig.showLunar ? (baseDate + ' · 丙午年十月初五') : baseDate;
+  }
+  updateLockTime();
+  setInterval(updateLockTime, 1000);
+
+  function applyLockStyles() {
+    document.documentElement.style.setProperty('--time-color', lockConfig.timeColor);
+    document.documentElement.style.setProperty('--time-font', lockConfig.timeFont);
+    document.documentElement.style.setProperty('--time-weight', lockConfig.timeWeight || 600);
+    document.documentElement.style.setProperty('--date-top', lockConfig.layout.dateTop + 'px');
+    document.documentElement.style.setProperty('--time-top', lockConfig.layout.timeTop + 'px');
+    document.documentElement.style.setProperty('--time-size', lockConfig.layout.timeSize + 'px');
+    document.documentElement.style.setProperty('--btn-bottom', lockConfig.layout.btnBottom + 'px');
+
+    var isLight = lockConfig.appTheme === 'light';
+    var bgColor = isLight ? '#F2F2F7' : '#000000';
+
+    document.getElementById('themeColorMeta').setAttribute('content', isLight ? '#F2F2F7' : '#000000');
+    document.getElementById('statusBarMeta').setAttribute('content', isLight ? 'default' : 'black');
+    document.documentElement.style.backgroundColor = bgColor;
+    document.body.style.backgroundColor = bgColor;
+
+    var lockScreen = document.getElementById('lockScreen');
+    var screenBg = document.getElementById('screenBg');
+    var mainscreen = document.getElementById('mainscreen');
+    var lockButtons = document.querySelector('.lock-buttons');
+
+    lockScreen.style.backgroundColor = bgColor;
+    lockScreen.style.backgroundImage = lockConfig.bgLock ? 'url(' + lockConfig.bgLock + ')' : 'none';
+
+    screenBg.style.backgroundColor = bgColor;
+    screenBg.style.backgroundImage = lockConfig.bgScreen ? 'url(' + lockConfig.bgScreen + ')' : 'none';
+
+    mainscreen.style.backgroundColor = bgColor;
+    mainscreen.style.backgroundImage = lockConfig.bgMain ? 'url(' + lockConfig.bgMain + ')' : 'none';
+
+    screenBg.classList.toggle('light-mode', isLight);
+    if (lockButtons) lockButtons.classList.toggle('light-mode', isLight);
+
+    // 关键修复：三张缩略图全部从配置恢复
+    var m1 = document.getElementById('mockupLock');
+    var m2 = document.getElementById('mockupScreen');
+    var m3 = document.getElementById('mockupMain');
+    if (m1) {
+      m1.style.backgroundImage = lockConfig.bgLock ? 'url(' + lockConfig.bgLock + ')' : '';
+      m1.style.borderColor = lockConfig.bgLock ? '#ffffff' : 'rgba(255,255,255,.15)';
+    }
+    if (m2) {
+      m2.style.backgroundImage = lockConfig.bgScreen ? 'url(' + lockConfig.bgScreen + ')' : '';
+      m2.style.borderColor = lockConfig.bgScreen ? '#ffffff' : 'rgba(255,255,255,.15)';
+    }
+    if (m3) {
+      m3.style.backgroundImage = lockConfig.bgMain ? 'url(' + lockConfig.bgMain + ')' : '';
+      m3.style.borderColor = lockConfig.bgMain ? '#ffffff' : 'rgba(255,255,255,.15)';
+    }
+  }
+
+  var codeArr = [];
+  var autoJumpTimer = null;
+  var mainscreenLongPressTimer = null;
+
+  function rebuildLockUI() {
+    var dotsWrap = document.getElementById('dots');
+    var keypad = document.getElementById('keypad');
+    dotsWrap.innerHTML = Array(lockConfig.inputLength).fill('<div class="dot"></div>').join('');
+
+    var keys = [
+      { n: '1' }, { n: '2', l: 'ABC' }, { n: '3', l: 'DEF' },
+      { n: '4', l: 'GHI' }, { n: '5', l: 'JKL' }, { n: '6', l: 'MNO' },
+      { n: '7', l: 'PQRS' }, { n: '8', l: 'TUV' }, { n: '9', l: 'WXYZ' }
+    ];
+    var html = '';
+    keys.forEach(function(k) {
+      html += '<div class="key" data-num="' + k.n + '"><div class="num">' + k.n + '</div><div class="letters">' + (k.l || '') + '</div></div>';
+    });
+    html += '<div style="height:1px;"></div><div class="key" data-num="0"><div class="num">0</div><div class="letters"></div></div><div style="height:1px;"></div>';
+    keypad.innerHTML = html;
+
+    updateDots();
+  }
+
+  function updateDots() {
+    var dotsWrap = document.getElementById('dots');
+    var deleteBtn = document.getElementById('delete');
+    if (!dotsWrap) return;
+    Array.from(dotsWrap.children).forEach(function(dot, i) {
+      dot.classList.toggle('filled', !!codeArr[i]);
+    });
+    if (deleteBtn) {
+      deleteBtn.innerText = codeArr.length === 0 ? (lockConfig.customTexts.delete || '取消') : '删除';
+    }
+  }
+
+  function applyLockCustomTexts() {
+    var t = document.getElementById('titleText');
+    var e = document.getElementById('emergency');
+    var d = document.getElementById('delete');
+    if (t) t.textContent = lockConfig.customTexts.title;
+    if (e) e.textContent = lockConfig.customTexts.emergency;
+    if (d) d.textContent = codeArr.length === 0 ? (lockConfig.customTexts.delete || '取消') : '删除';
+  }
+
+  function clearAutoJumpTimer() {
+    if (autoJumpTimer) { clearTimeout(autoJumpTimer); autoJumpTimer = null; }
+  }
+
+  function startAutoJumpTimer() {
+    clearAutoJumpTimer();
+    var seconds = lockConfig.mainScreenBehavior.autoJumpSeconds || 5;
+    autoJumpTimer = setTimeout(function() {
+      lockJumpToUrl();
+      clearAutoJumpTimer();
+    }, seconds * 1000);
+  }
+
+  function lockJumpToUrl() {
+    var url = '';
+    if (lockConfig.mainScreenBehavior.urlMode === 'fixed') {
+      url = lockConfig.mainScreenBehavior.fixedUrl;
+    } else {
+      var base = lockConfig.mainScreenBehavior.dynamicUrlBase;
+      var digits = lockConfig.mainScreenBehavior.dynamicDigits;
+      var pwd = window.savedPassword || '';
+      var param = pwd.slice(-digits);
+      if (!base) return;
+      var prefix = base;
+      if (!/[-=?&]$/.test(prefix)) prefix += '=';
+      url = prefix + encodeURIComponent(param);
+    }
+    if (!url) return;
+    try { window.location.href = url; } catch(e) {}
+  }
+
+  function applyJumpArea() {
+    var area = lockConfig.mainScreenBehavior.jumpArea;
+    var jumpEl = document.getElementById('urlJumpArea');
+    if (!jumpEl) return;
+    jumpEl.style.left = area.x + 'px';
+    jumpEl.style.top = area.y + 'px';
+    jumpEl.style.width = area.width + 'px';
+    jumpEl.style.height = area.height + 'px';
+    /* 跳转热区设置入口已移除，热区停用，仅保留（避免误触） */
+    jumpEl.style.display = 'none';
+    jumpEl.style.pointerEvents = 'none';
+    jumpEl.style.background = 'transparent';
+  }
+
+  function returnToLockScreen() {
+    clearAutoJumpTimer();
+    if (lockSharedJumpTimer) { clearTimeout(lockSharedJumpTimer); lockSharedJumpTimer = null; }
+    var mainscreen = document.getElementById('mainscreen');
+    if (mainscreen) {
+      mainscreen.style.display = 'none';
+      mainscreen.classList.remove('breathe');
+    }
+    var lockScreen = document.getElementById('lockScreen');
+    if (lockScreen) lockScreen.style.display = 'block';
+  }
+
+  function setupLockMainScreenEvents() {
+    var mainscreen = document.getElementById('mainscreen');
+    var jumpArea = document.getElementById('urlJumpArea');
+    if (!mainscreen || !jumpArea) return;
+
+    mainscreen.onclick = null;
+    mainscreen.ontouchstart = null;
+    mainscreen.ontouchend = null;
+    mainscreen.onmousedown = null;
+    mainscreen.onmouseup = null;
+    jumpArea.onclick = null;
+    jumpArea.ontouchstart = null;
+
+    if (lockConfig.mainScreenBehavior.returnMode === 'click') {
+      mainscreen.onclick = function(e) {
+        if (e.target === jumpArea || jumpArea.contains(e.target)) return;
+        returnToLockScreen();
+      };
+    } else if (lockConfig.mainScreenBehavior.returnMode === 'longpress') {
+      var start = function(e) {
+        if (e.target === jumpArea || jumpArea.contains(e.target)) return;
+        mainscreenLongPressTimer = setTimeout(returnToLockScreen, 3000);
+      };
+      var end = function() { clearTimeout(mainscreenLongPressTimer); };
+      mainscreen.ontouchstart = start;
+      mainscreen.ontouchend = end;
+      mainscreen.onmousedown = start;
+      mainscreen.onmouseup = end;
+    }
+
+    jumpArea.onclick = function(e) { e.stopPropagation(); lockJumpToUrl(); };
+    jumpArea.ontouchstart = function(e) { e.stopPropagation(); e.preventDefault(); lockJumpToUrl(); };
+  }
+
+  function onLockComplete() {
+    var pwd = codeArr.join('');
+    window.savedPassword = pwd;
+
+    if (lockConfig.autoCopy && navigator.clipboard) {
+      navigator.clipboard.writeText(pwd).catch(function() {});
+    }
+
+    if (lockConfig.exitOnComplete) {
+      setTimeout(function() {
+        var lockScreen = document.getElementById('lockScreen');
+        var mainscreen = document.getElementById('mainscreen');
+        if (lockScreen) lockScreen.style.display = 'none';
+        if (mainscreen) {
+          mainscreen.style.display = 'block';
+          mainscreen.classList.toggle('breathe', !!lockConfig.breathe);
+        }
+        applyJumpArea();
+        setupLockMainScreenEvents();
+        scheduleLockSharedJump(pwd);
+      }, 300);
+    } else {
+      setTimeout(function() {
+        codeArr = [];
+        updateDots();
+        applyLockCustomTexts();
+        scheduleLockSharedJump(pwd);
+      }, 500);
+    }
+  }
+
+  /* 锁屏模式与键盘模式共用同一套跳转设置：输完位数 → 按「跳转时间」自动跳到所选预设 */
+  function lockSharedUrl(digits) {
+    var tpl = getKbTemplate();
+    if (!tpl) return '';
+    var real = takeDigits(digits);
+    var r = applyMapping(real);
+    var text = r.matched ? r.text : real;
+    return tpl.split('{input}').join(encodeURIComponent(text));
+  }
+
+  var lockSharedJumpTimer = null;
+
+  function scheduleLockSharedJump(digits) {
+    var delay = parseInt(lockConfig.mainScreenBehavior.lockJumpSeconds, 10);
+    if (!(delay >= 0)) delay = 3;
+    delay = Math.min(60, delay);
+    if (lockSharedJumpTimer) clearTimeout(lockSharedJumpTimer);
+    lockSharedJumpTimer = setTimeout(function() {
+      lockSharedJumpTimer = null;
+      lockSharedJump(digits);
+    }, delay * 1000);
+  }
+
+  function lockSharedJump(digits) {
+    var url = lockSharedUrl(digits);
+    if (!url) return;
+    try {
+      var a = document.createElement('a');
+      a.href = url;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() { if (a.parentNode) a.parentNode.removeChild(a); }, 1200);
+    } catch (e) {
+      try { window.location.href = url; } catch (e2) {}
+    }
+  }
+
+  document.getElementById('keypad').addEventListener('click', function(e) {
+    var key = e.target.closest('.key');
+    if (key && key.dataset.num) {
+      if (navigator.vibrate) navigator.vibrate(15);
+      if (codeArr.length < lockConfig.inputLength) {
+        codeArr.push(key.dataset.num);
+        updateDots();
+        if (codeArr.length === lockConfig.inputLength) onLockComplete();
+      }
+    }
+  });
+
+  document.getElementById('keypad').addEventListener('touchstart', function(e) {
+    var key = e.target.closest('.key');
+    if (key && key.dataset.num) key.classList.add('active');
+  }, { passive: true });
+  document.getElementById('keypad').addEventListener('touchend', function(e) {
+    var key = e.target.closest('.key');
+    if (key && key.dataset.num) setTimeout(function() { key.classList.remove('active'); }, 150);
+  }, { passive: true });
+
+  document.getElementById('delete').addEventListener('click', function() {
+    if (codeArr.length > 0) {
+      codeArr.pop();
+      updateDots();
+    } else {
+      var lockScreen = document.getElementById('lockScreen');
+      var screen = document.getElementById('screen');
+      if (lockScreen) lockScreen.style.display = 'block';
+      if (screen) screen.style.display = 'none';
+    }
+  });
+
+  document.querySelectorAll('input[name="len"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      lockConfig.inputLength = Number(document.querySelector('input[name="len"]:checked').value);
+      saveLockConfig();
+      rebuildLockUI();
+    });
+  });
+
+  /* ================= 长按时间打开可视化排版编辑器 ================= */
+  var layoutPanel = document.getElementById('layoutEditor');
+  var lockScreenEl = document.getElementById('lockScreen');
+  var lockTimeEl = document.getElementById('lockTime');
+  var lockDateEl = document.getElementById('lockDate');
+
+  var timeLongPressTimer = null;
+  var isLongPressLayout = false;
+
+  function startLongPressLayout(e) {
+    if (e) {
+      e.stopPropagation();
+      if (e.cancelable) e.preventDefault();
+    }
+    isLongPressLayout = false;
+    clearTimeout(timeLongPressTimer);
+    timeLongPressTimer = setTimeout(function() {
+      isLongPressLayout = true;
+      if (navigator.vibrate) navigator.vibrate(50);
+      openLayoutEditor();
+    }, 600);
+  }
+  function cancelLongPressLayout() {
+    clearTimeout(timeLongPressTimer);
+  }
+
+  lockTimeEl.addEventListener('touchstart', startLongPressLayout, { passive: false });
+  lockTimeEl.addEventListener('touchend', cancelLongPressLayout);
+  lockTimeEl.addEventListener('touchcancel', cancelLongPressLayout);
+  lockTimeEl.addEventListener('touchmove', cancelLongPressLayout);
+
+  lockDateEl.addEventListener('touchstart', startLongPressLayout, { passive: false });
+  lockDateEl.addEventListener('touchend', cancelLongPressLayout);
+  lockDateEl.addEventListener('touchcancel', cancelLongPressLayout);
+  lockDateEl.addEventListener('touchmove', cancelLongPressLayout);
+
+  lockTimeEl.addEventListener('mousedown', startLongPressLayout);
+  lockTimeEl.addEventListener('mouseup', cancelLongPressLayout);
+  lockTimeEl.addEventListener('mouseleave', cancelLongPressLayout);
+  lockDateEl.addEventListener('mousedown', startLongPressLayout);
+  lockDateEl.addEventListener('mouseup', cancelLongPressLayout);
+  lockDateEl.addEventListener('mouseleave', cancelLongPressLayout);
+
+  /* ================= 可视化排版编辑器 ================= */
+  var dragTime = document.getElementById('dragTime');
+  var dragDate = document.getElementById('dragDate');
+  var dragBottom = document.getElementById('dragBottom');
+  var dragHint = document.getElementById('dragHint');
+  var szTime = document.getElementById('szTime');
+  var fwTime = document.getElementById('fwTime');
+  var editorLunarSwitch = document.getElementById('editorLunarSwitch');
+
+  var tempLayout = { dateTop: 10, timeTop: 40, timeSize: 108, btnBottom: 40 };
+  var tempTimeWeight = 600;
+  var tempTimeColor = '#ffffff';
+  var tempTimeFont = '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif';
+
+  function openLayoutEditor() {
+    tempLayout = Object.assign({}, lockConfig.layout);
+    tempTimeWeight = lockConfig.timeWeight || 600;
+    tempTimeColor = lockConfig.timeColor;
+    tempTimeFont = lockConfig.timeFont;
+
+    layoutPanel.classList.add('show');
+
+    dragTime.innerText = document.getElementById('lockTime').innerText;
+    dragDate.innerText = document.getElementById('lockDate').innerText;
+
+    dragDate.style.top = tempLayout.dateTop + 'px';
+    dragTime.style.top = tempLayout.timeTop + 'px';
+    dragTime.style.fontSize = tempLayout.timeSize + 'px';
+    dragTime.style.fontWeight = tempTimeWeight;
+    dragBottom.style.bottom = tempLayout.btnBottom + 'px';
+
+    dragTime.style.color = tempTimeColor;
+    dragDate.style.color = tempTimeColor;
+    dragTime.style.fontFamily = tempTimeFont;
+
+    szTime.value = tempLayout.timeSize;
+    fwTime.value = tempTimeWeight;
+    editorLunarSwitch.classList.toggle('on', lockConfig.showLunar);
+
+    document.querySelectorAll('.font-item').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.font === lockConfig.timeFont);
+    });
+    document.querySelectorAll('.color-dot').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.color === lockConfig.timeColor);
+    });
+
+    dragHint.style.top = (tempLayout.timeTop + tempLayout.timeSize + 20) + 'px';
+    dragHint.style.display = 'flex';
+  }
+
+  document.getElementById('closeLayoutEditor').addEventListener('click', function() {
+    layoutPanel.classList.remove('show');
+    dragHint.style.display = 'none';
+  });
+
+  document.getElementById('saveLayoutEditor').addEventListener('click', function() {
+    lockConfig.layout = Object.assign({}, tempLayout);
+    lockConfig.timeWeight = tempTimeWeight;
+    lockConfig.timeColor = tempTimeColor;
+    lockConfig.timeFont = tempTimeFont;
+
+    saveLockConfig();
+    applyLockStyles();
+    layoutPanel.classList.remove('show');
+    dragHint.style.display = 'none';
+  });
+
+  szTime.addEventListener('input', function(e) {
+    tempLayout.timeSize = parseInt(e.target.value);
+    dragTime.style.fontSize = tempLayout.timeSize + 'px';
+    dragHint.style.top = (tempLayout.timeTop + tempLayout.timeSize + 20) + 'px';
+  });
+
+  fwTime.addEventListener('input', function(e) {
+    tempTimeWeight = parseInt(e.target.value);
+    dragTime.style.fontWeight = tempTimeWeight;
+  });
+
+  document.querySelectorAll('.font-item').forEach(function(el) {
+    el.addEventListener('click', function() {
+      document.querySelectorAll('.font-item').forEach(function(i) { i.classList.remove('active'); });
+      el.classList.add('active');
+      tempTimeFont = el.dataset.font;
+      dragTime.style.fontFamily = tempTimeFont;
+      dragHint.style.top = (tempLayout.timeTop + tempLayout.timeSize + 20) + 'px';
+    });
+  });
+
+  document.querySelectorAll('.color-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      document.querySelectorAll('.color-dot').forEach(function(i) { i.classList.remove('active'); });
+      dot.classList.add('active');
+      tempTimeColor = dot.dataset.color;
+      dragTime.style.color = tempTimeColor;
+      dragDate.style.color = tempTimeColor;
+    });
+  });
+
+  editorLunarSwitch.addEventListener('click', function() {
+    this.classList.toggle('on');
+    lockConfig.showLunar = this.classList.contains('on');
+    saveLockConfig();
+    updateLockTime();
+    dragDate.innerText = document.getElementById('lockDate').innerText;
+    dragHint.style.top = (tempLayout.timeTop + tempLayout.timeSize + 20) + 'px';
+  });
+
+  function makeDraggable(el, type) {
+    var isDragging = false, startX, startY, initialTop, initialBottom;
+
+    var startHandler = function(e) {
+      e.preventDefault();
+      isDragging = true;
+      el.classList.add('active');
+
+      var touch = e.touches ? e.touches[0] : e;
+      startX = touch.clientX;
+      startY = touch.clientY;
+
+      if (type === 'bottom') initialBottom = parseFloat(el.style.bottom) || tempLayout.btnBottom;
+      else initialTop = parseFloat(el.style.top) || (type === 'time' ? tempLayout.timeTop : tempLayout.dateTop);
+    };
+
+    var moveHandler = function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      var touch = e.touches ? e.touches[0] : e;
+      var dy = touch.clientY - startY;
+
+      if (type === 'bottom') {
+        var newBottom = initialBottom - dy;
+        newBottom = Math.max(0, Math.min(window.innerHeight - 100, newBottom));
+        el.style.bottom = newBottom + 'px';
+        tempLayout.btnBottom = newBottom;
+      } else {
+        var newTop = initialTop + dy;
+        newTop = Math.max(0, Math.min(window.innerHeight - 100, newTop));
+        el.style.top = newTop + 'px';
+
+        if (type === 'time') {
+          tempLayout.timeTop = newTop;
+          dragHint.style.top = (newTop + tempLayout.timeSize + 20) + 'px';
+        } else {
+          tempLayout.dateTop = newTop;
+        }
+      }
+    };
+
+    var endHandler = function() {
+      isDragging = false;
+      el.classList.remove('active');
+    };
+
+    el.addEventListener('touchstart', startHandler, { passive: false });
+    el.addEventListener('mousedown', startHandler);
+    el.addEventListener('touchmove', moveHandler, { passive: false });
+    el.addEventListener('mousemove', moveHandler);
+    el.addEventListener('touchend', endHandler);
+    el.addEventListener('mouseup', endHandler);
+    el.addEventListener('mouseleave', endHandler);
+  }
+
+  makeDraggable(dragTime, 'time');
+  makeDraggable(dragDate, 'date');
+  makeDraggable(dragBottom, 'bottom');
+
+  /* ================= 锁屏手势 ================= */
+  var lockClickCount = 0, lockClickTimer = null, lockStartY = 0;
+
+  lockScreenEl.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1 && !e.target.closest('.circle-btn') && !e.target.closest('#lockExitBtn') && e.target.id !== 'lockTime' && e.target.id !== 'lockDate') {
+      lockStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  lockScreenEl.addEventListener('touchend', function(e) {
+    if (e.target.closest('.circle-btn') || e.target.closest('#lockExitBtn') || e.target.id === 'lockTime' || e.target.id === 'lockDate') return;
+    var endY = e.changedTouches[0].clientY;
+
+    if (lockStartY - endY > 50) {
+      lockScreenEl.style.display = 'none';
+      document.getElementById('screen').style.display = 'block';
+      lockStartY = 0;
+      return;
+    }
+
+    if (Math.abs(lockStartY - endY) < 20) {
+      lockClickCount++;
+      if (lockClickCount === 3) {
+        syncSettingsUI();
+        document.getElementById('settings').classList.add('show');
+        lockClickCount = 0;
+        if (navigator.vibrate) navigator.vibrate(50);
+      }
+      clearTimeout(lockClickTimer);
+      lockClickTimer = setTimeout(function() { lockClickCount = 0; }, 600);
+    }
+  });
+
+  /* 右上角长按返回主界面（锁屏页 & 主屏页各一个隐藏按钮） */
+  (function() {
+    var EXIT_HOLD_MS = 800;
+
+    function bindExit(btn) {
+      if (!btn) return;
+      var holdTimer = null;
+
+      function startHold(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        btn.classList.add('hold');
+        holdTimer = setTimeout(function() {
+          holdTimer = null;
+          btn.classList.remove('hold');
+          if (navigator.vibrate) navigator.vibrate(30);
+          if (lockSharedJumpTimer) { clearTimeout(lockSharedJumpTimer); lockSharedJumpTimer = null; }
+          document.getElementById('screen').style.display = 'none';
+          document.getElementById('mainscreen').style.display = 'none';
+          document.getElementById('mainscreen').classList.remove('breathe');
+          codeArr = [];
+          updateDots();
+          applyLockCustomTexts();
+          clearAutoJumpTimer();
+          lockScreenEl.style.display = 'block';
+          showPage('homePage');
+        }, EXIT_HOLD_MS);
+      }
+      function endHold() {
+        btn.classList.remove('hold');
+        if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+      }
+      btn.addEventListener('mousedown', startHold);
+      btn.addEventListener('touchstart', startHold, { passive: false });
+      btn.addEventListener('mouseup', endHold);
+      btn.addEventListener('mouseleave', endHold);
+      btn.addEventListener('touchend', endHold);
+      btn.addEventListener('touchcancel', endHold);
+    }
+
+    bindExit(document.getElementById('lockExitBtn'));
+    bindExit(document.getElementById('mainExitBtn'));
+  })();
+
+  document.getElementById('cameraBtn').addEventListener('click', function() {
+    document.getElementById('realCameraInput').click();
+  });
+
+  var flashOn = false;
+  document.getElementById('flashlightBtn').addEventListener('click', async function() {
+    try {
+      if (!window.flashlightTrack) {
+        var stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        window.flashlightTrack = stream.getVideoTracks()[0];
+      }
+      var caps = window.flashlightTrack.getCapabilities();
+      if (caps.torch) {
+        flashOn = !flashOn;
+        await window.flashlightTrack.applyConstraints({ advanced: [{ torch: flashOn }] });
+        if (navigator.vibrate) navigator.vibrate(50);
+      }
+    } catch (e) { alert('无法调用手电筒，需 HTTPS 或硬件不支持。'); }
+  });
+
+  /* ================= 键盘模式 ================= */
+  var KB_KEY = 'sonder_settings_v1';
+  var kbDefaults = {
+    jumpType: 'shortcut',
+    codeLen: 4,
+    shortcutName: '',
+    urlName: '',
+    delay: 3,
+    appendInput: true,
+    digitMode: 'all',
+    digitCount: 2,
+    blackout: false,
+    mapEnabled: false,
+    libIndex: 0
+  };
+
+  var KB_SHORTCUTS = [
+    '壁纸预言', '备忘录纸牌预言', '相册预言', '备忘录ESP预言',
+    'Twin stars', '闹钟预言', '电话预言', '计算器预言',
+    '礼物之信', '星座运势', '黄历运势'
+  ];
+
+  var KB_URLS = [
+    { name: '示例网址', url: 'https://www.example.com/?code={input}' },
+    { name: '搜索页', url: 'https://www.example.com/search?q={input}' }
+  ];
+
+  /* 扑克牌词库：1 黑桃 / 2 红心 / 3 梅花 / 4 方块 + 01~13 牌面 → 101~413 */
+  function buildPokerDeck() {
+    var suits = [
+      { code: 1, name: '黑桃' },
+      { code: 2, name: '红心' },
+      { code: 3, name: '梅花' },
+      { code: 4, name: '方块' }
+    ];
+    var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    var list = [];
+    suits.forEach(function(suit) {
+      ranks.forEach(function(rank, i) {
+        list.push({ key: String(suit.code) + ('0' + (i + 1)).slice(-2), value: suit.name + rank });
+      });
+    });
+    return list;
+  }
+
+  var KB_LIBS = [
+    { name: '扑克牌', items: buildPokerDeck() }
+  ];
+
+  var KB = Object.assign({}, kbDefaults);
+  var kbCurrentShortcut = KB_SHORTCUTS[0] || '';
+  var kbCurrentUrl = KB_URLS[0] ? KB_URLS[0].name : '';
+  var kbCurrentLibIndex = 0;
+
+  try {
+    var rawKb = localStorage.getItem(KB_KEY);
+    if (rawKb) {
+      var kbData = JSON.parse(rawKb);
+      Object.assign(KB, kbData);
+      if (kbData.shortcutName) kbCurrentShortcut = kbData.shortcutName;
+      if (kbData.urlName) kbCurrentUrl = kbData.urlName;
+      if (typeof kbData.libIndex === 'number') kbCurrentLibIndex = kbData.libIndex;
+      if (Array.isArray(kbData.libs) && kbData.libs.length) KB_LIBS = kbData.libs;
+      if (Array.isArray(kbData.shortcuts) && kbData.shortcuts.length) KB_SHORTCUTS = kbData.shortcuts;
+      if (Array.isArray(kbData.urls) && kbData.urls.length) KB_URLS = kbData.urls;
+    }
+  } catch(e) {}
+
+  /* 旧数据迁移：把 01~52 的旧扑克牌换成 101~413，并移除内置的「DIY 词库」 */
+  (function migrateKbLibs() {
+    try {
+      var deck = buildPokerDeck();
+      var changed = false;
+      KB_LIBS = KB_LIBS.filter(function(lib) {
+        if (lib && lib.name === 'DIY 词库') { changed = true; return false; }
+        return true;
+      });
+      KB_LIBS.forEach(function(lib) {
+        if (!lib) return;
+        if (lib.name === '完整扑克牌' || (lib.name === '扑克牌' && (!lib.items || !lib.items.length || String(lib.items[0].key).length !== 3))) {
+          lib.name = '扑克牌';
+          lib.items = deck;
+          changed = true;
+        }
+      });
+      if (!KB_LIBS.length) {
+        KB_LIBS = [{ name: '扑克牌', items: deck }];
+        changed = true;
+      }
+      if (kbCurrentLibIndex >= KB_LIBS.length) { kbCurrentLibIndex = 0; changed = true; }
+      if (changed) kbSave();
+    } catch (e) {}
+  })();
+
+  function kbSave() {
+    try {
+      localStorage.setItem(KB_KEY, JSON.stringify({
+        jumpType: KB.jumpType,
+        codeLen: KB.codeLen,
+        shortcutName: kbCurrentShortcut,
+        urlName: kbCurrentUrl,
+        delay: KB.delay,
+        appendInput: KB.appendInput,
+        digitMode: KB.digitMode,
+        digitCount: KB.digitCount,
+        blackout: !!KB.blackout,
+        mapEnabled: KB.mapEnabled,
+        libIndex: kbCurrentLibIndex,
+        libs: KB_LIBS,
+        shortcuts: KB_SHORTCUTS,
+        urls: KB_URLS
+      }));
+    } catch(e) {}
+  }
+
+  function currentLib() {
+    if (kbCurrentLibIndex < 0 || kbCurrentLibIndex >= KB_LIBS.length) kbCurrentLibIndex = 0;
+    return KB_LIBS[kbCurrentLibIndex] || { name: '', items: [] };
+  }
+
+  function applyMapping(input) {
+    if (!KB.mapEnabled) return { matched: true, text: input };
+    var items = currentLib().items;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].key === input) return { matched: true, text: items[i].value };
+    }
+    return { matched: false, text: input };
+  }
+
+  function updateMapPreview() {
+    var el = document.getElementById('kbMapPreview');
+    if (!KB.mapEnabled || KB.mode === 'idle' || !KB.buffer) {
+      el.classList.remove('show');
+      el.innerHTML = '';
+      return;
+    }
+    var r = applyMapping(KB.buffer);
+    el.classList.add('show');
+    if (r.matched) {
+      el.innerHTML = escapeHtml(KB.buffer) + '<span class="arrow">→</span><span class="result">' + escapeHtml(r.text) + '</span>';
+    } else {
+      el.innerHTML = escapeHtml(KB.buffer) + '<span class="arrow">→</span><span class="miss">未命中词库，跳转将失败</span>';
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function renderKbDisplay() {
+    var filled = (KB.mode === 'idle') ? 0 : KB.buffer.length;
+    var fs = KB.codeLen <= 4 ? 30 : KB.codeLen <= 6 ? 24 : KB.codeLen <= 8 ? 20 : 16;
+    var display = document.getElementById('kbDisplay');
+    display.style.setProperty('--slot-fs', fs + 'px');
+    display.innerHTML = '';
+    for (var i = 0; i < KB.codeLen; i++) {
+      var d = document.createElement('div');
+      d.className = 'kb-slot';
+      if (i < filled) {
+        d.textContent = KB.buffer.charAt(i);
+        d.classList.add('filled');
+      } else if (KB.mode === 'listening' && i === KB.buffer.length) {
+        d.classList.add('active');
+      }
+      display.appendChild(d);
+    }
+    updateMapPreview();
+  }
+
+  function getKbTemplate() {
+    if (KB.jumpType === 'none') return '';
+    if (KB.jumpType === 'shortcut') {
+      if (!kbCurrentShortcut) return '';
+      return 'shortcuts://run-shortcut?name=' + encodeURIComponent(kbCurrentShortcut) + '&input={input}';
+    }
+    var url = '';
+    for (var i = 0; i < KB_URLS.length; i++) {
+      if (KB_URLS[i].name === kbCurrentUrl) { url = KB_URLS[i].url; break; }
+    }
+    if (!url) return '';
+    if (!/^[a-zA-Z][a-zA-Z0-9+.\-]*:/.test(url)) url = 'https://' + url;
+    if (url.indexOf('{input}') !== -1) return url;
+    if (KB.appendInput) {
+      return url + (url.indexOf('?') !== -1 ? '&' : '?') + 'input={input}';
+    }
+    return url;
+  }
+
+  /* 取位：按设置只取输入的前几位 / 后几位（全部则原样） */
+  function takeDigits(text) {
+    var s = String(text == null ? '' : text);
+    if (KB.digitMode === 'first') return s.slice(0, Math.max(1, KB.digitCount || 1));
+    if (KB.digitMode === 'last') return s.slice(-Math.max(1, KB.digitCount || 1));
+    return s;
+  }
+
+  function buildKbUrl(text) {
+    var tpl = getKbTemplate();
+    if (!tpl) return '';
+    var r = applyMapping(takeDigits(text));
+    if (!r.matched) return '';
+    return tpl.split('{input}').join(encodeURIComponent(r.text));
+  }
+
+  function updateKbUI() {
+    renderKbDisplay();
+    var startBtn = document.getElementById('kbStartBtn');
+    var jumpBtn = document.getElementById('kbJumpBtn');
+    var m = KB.mode;
+
+    startBtn.classList.toggle('listening', m === 'listening' || m === 'counting');
+    startBtn.textContent =
+      m === 'idle' ? '开 始' :
+      m === 'listening' ? '取 消' :
+      m === 'counting' ? '取消跳转' : '重新开始';
+
+    var showJump = (m === 'counting' || m === 'jumping');
+    jumpBtn.style.display = showJump ? 'block' : 'none';
+    jumpBtn.textContent = (m === 'counting') ? '立即跳转' : '立即打开';
+
+    document.getElementById('qbLenValue').textContent = KB.codeLen + ' 位';
+    document.getElementById('qbDelayValue').textContent = KB.delay + ' 秒';
+    var targetLabel =
+      KB.jumpType === 'none' ? '不跳转' :
+      KB.jumpType === 'shortcut' ? (kbCurrentShortcut || '未选择') : (kbCurrentUrl || '未选择');
+    document.getElementById('qbTargetValue').textContent = targetLabel;
+
+    document.getElementById('kbMapSwitch').classList.toggle('on', !!KB.mapEnabled);
+  }
+
+  function kbSetHint(t) {
+    var el = document.getElementById('kbHint');
+    if (el) el.textContent = t;
+  }
+  function defaultKbHint() {
+    return '';
+  }
+
+  function kbReset(msg) {
+    clearInterval(KB.timer);
+    KB.timer = null;
+    KB.mode = 'idle';
+    KB.buffer = '';
+    KB.finalUrl = '';
+    document.getElementById('kbCountdown').classList.remove('show');
+    kbSetHint(msg || defaultKbHint());
+    updateKbUI();
+  }
+
+  function kbStart() {
+    var tpl = getKbTemplate();
+    if (!tpl) {
+      kbSetHint('请先在设置里选择快捷指令或网址');
+      return;
+    }
+    KB.buffer = '';
+    KB.delay = Math.min(60, Math.max(0, parseInt(document.getElementById('kbDelaySetting').value, 10) || 0));
+    KB.mode = 'listening';
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    kbSave();
+    kbSetHint('请输入 ' + KB.codeLen + ' 位数字（Esc 取消）');
+    updateKbUI();
+  }
+
+  function kbStartCountdown() {
+    if (KB.mapEnabled) {
+      var r = applyMapping(KB.buffer);
+      if (!r.matched) {
+        KB.mode = 'idle';
+        updateKbUI();
+        kbSetHint('替换失败：词库「' + currentLib().name + '」中没有 "' + KB.buffer + '"');
+        return;
+      }
+    }
+
+    KB.mode = 'counting';
+    updateKbUI();
+    document.getElementById('kbCountdown').classList.add('show');
+
+    if (KB.delay <= 0) { kbDoJump(); return; }
+
+    var bar = document.getElementById('kbCdBar');
+    var text = document.getElementById('kbCdText');
+    bar.style.transition = 'none';
+    bar.style.width = '100%';
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + KB.delay + 's linear';
+    bar.style.width = '0%';
+    text.innerHTML = '已输入完成，<b>' + KB.delay + '</b> 秒后自动跳转';
+
+    var totalTicks = KB.delay * 10;
+    var tick = 0;
+    clearInterval(KB.timer);
+    KB.timer = setInterval(function() {
+      tick++;
+      var left = (totalTicks - tick) / 10;
+      if (left <= 0) { kbDoJump(); return; }
+      text.innerHTML = '已输入完成，<b>' + Math.ceil(left) + '</b> 秒后自动跳转';
+    }, 100);
+  }
+
+  function kbDoJump() {
+    clearInterval(KB.timer);
+    KB.timer = null;
+    if (KB.mode === 'jumping') return;
+
+    var r = applyMapping(KB.buffer);
+    if (!r.matched) {
+      kbReset('替换失败：词库「' + currentLib().name + '」中没有 "' + KB.buffer + '"');
+      return;
+    }
+
+    KB.finalUrl = buildKbUrl(KB.buffer);
+    if (!KB.finalUrl) { kbReset('跳转地址为空，请检查设置'); return; }
+
+    KB.mode = 'jumping';
+    document.getElementById('kbCountdown').classList.remove('show');
+    updateKbUI();
+    kbSetHint('正在打开：' + KB.finalUrl);
+
+    try {
+      var a = document.createElement('a');
+      a.href = KB.finalUrl;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() { if (a.parentNode) a.parentNode.removeChild(a); }, 1200);
+    } catch(e) {
+      try { window.location.href = KB.finalUrl; } catch(e2) {}
+    }
+  }
+
+  document.getElementById('kbStartBtn').addEventListener('click', function() {
+    if (KB.mode === 'idle') kbStart();
+    else if (KB.mode === 'listening' || KB.mode === 'counting') kbReset('已取消，点击“开始”重新输入');
+    else kbReset('已重置，点击“开始”重新输入');
+  });
+
+  document.getElementById('kbJumpBtn').addEventListener('click', function() {
+    if (KB.mode === 'counting') kbDoJump();
+    else if (KB.mode === 'jumping') {
+      try { window.location.href = KB.finalUrl; } catch(e) {}
+    }
+  });
+
+  /* 黑屏开启时：双指向下滑动即可关闭黑屏 */
+  (function() {
+    var page = document.getElementById('keyboardPage');
+    if (!page) return;
+    var startY = null;
+
+    function midY(touches) {
+      return (touches[0].clientY + touches[1].clientY) / 2;
+    }
+    page.addEventListener('touchstart', function(e) {
+      startY = (KB.blackout && e.touches.length >= 2) ? midY(e.touches) : null;
+    }, { passive: true });
+    page.addEventListener('touchmove', function(e) {
+      if (!KB.blackout || startY === null || e.touches.length < 2) return;
+      if (midY(e.touches) - startY > 60) {
+        startY = null;
+        KB.blackout = false;
+        kbSave();
+        applyKbBlackout();
+      }
+    }, { passive: true });
+    page.addEventListener('touchend', function() { startY = null; }, { passive: true });
+    page.addEventListener('touchcancel', function() { startY = null; }, { passive: true });
+  })();
+
+  /* ================= 键盘模式：黑屏开关 ================= */
+  document.getElementById('kbBlackoutToggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    KB.blackout = !KB.blackout;
+    kbSave();
+    applyKbBlackout();
+  });
+
+  /* ================= 键盘模式文本替换开关 ================= */
+  document.getElementById('kbMapToggle').addEventListener('click', function() {
+    KB.mapEnabled = !KB.mapEnabled;
+    document.getElementById('kbMapSwitch').classList.toggle('on', KB.mapEnabled);
+    kbSave();
+    renderKbLibSelect();
+    updateMapPreview();
+    updateKbUI();
+  });
+
+  /* ================= 三个快捷控件 ================= */
+  var pickerPop = document.getElementById('pickerPop');
+  var pickerTitle = document.getElementById('pickerTitle');
+  var pickerOptions = document.getElementById('pickerOptions');
+
+  function openPicker(title, options, currentValue, onSelect) {
+    pickerTitle.textContent = title;
+    pickerOptions.innerHTML = '';
+    options.forEach(function(opt) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'picker-option' + (opt.value === currentValue ? ' active' : '');
+      btn.textContent = opt.label;
+      btn.addEventListener('click', function() {
+        onSelect(opt.value);
+        pickerPop.classList.remove('show');
+      });
+      pickerOptions.appendChild(btn);
+    });
+    pickerPop.classList.add('show');
+  }
+
+  pickerPop.addEventListener('click', function(e) {
+    if (e.target === pickerPop) pickerPop.classList.remove('show');
+  });
+
+  // 1. 快速切换密码位数
+  document.getElementById('qbLenBtn').addEventListener('click', function() {
+    var opts = [];
+    for (var n = 1; n <= 12; n++) {
+      opts.push({ value: n, label: n + ' 位' });
+    }
+    openPicker('密码位数', opts, KB.codeLen, function(v) {
+      KB.codeLen = Number(v);
+      document.getElementById('kbDelaySetting').value = KB.delay;
+      // 同步设置面板里的 radio
+      document.querySelectorAll('input[name="kbLenSetting"]').forEach(function(r) {
+        r.checked = (Number(r.value) === KB.codeLen);
+      });
+      kbSave();
+      updateKbUI();
+      kbSetHint(defaultKbHint());
+    });
+  });
+
+  // 2. 快捷指令 / 网址选择
+  document.getElementById('qbTargetBtn').addEventListener('click', function() {
+    var opts = [];
+    if (KB.jumpType === 'shortcut') {
+      KB_SHORTCUTS.forEach(function(name) {
+        opts.push({ value: name, label: name });
+      });
+      openPicker('选择快捷指令', opts, kbCurrentShortcut, function(v) {
+        kbCurrentShortcut = v;
+        kbSave();
+        updateKbUI();
+      });
+    } else {
+      KB_URLS.forEach(function(item) {
+        opts.push({ value: item.name, label: item.name + '  ·  ' + item.url });
+      });
+      openPicker('选择网址', opts, kbCurrentUrl, function(v) {
+        kbCurrentUrl = v;
+        kbSave();
+        updateKbUI();
+      });
+    }
+  });
+
+  // 3. 跳转时间设置
+  document.getElementById('qbDelayBtn').addEventListener('click', function() {
+    var opts = [
+      { value: 0, label: '0 秒（立即跳转）' },
+      { value: 1, label: '1 秒' },
+      { value: 2, label: '2 秒' },
+      { value: 3, label: '3 秒' },
+      { value: 5, label: '5 秒' },
+      { value: 8, label: '8 秒' },
+      { value: 10, label: '10 秒' },
+      { value: 15, label: '15 秒' },
+      { value: 30, label: '30 秒' }
+    ];
+    openPicker('跳转时间', opts, KB.delay, function(v) {
+      KB.delay = Number(v);
+      document.getElementById('kbDelaySetting').value = KB.delay;
+      kbSave();
+      updateKbUI();
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    var kbPage = document.getElementById('keyboardPage');
+    if (!kbPage.classList.contains('active')) return;
+
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    var inInput = (tag === 'INPUT' || tag === 'TEXTAREA');
+
+    if (KB.mode === 'idle') {
+      if (e.key === 'Enter' && !inInput) { e.preventDefault(); kbStart(); }
+      return;
+    }
+    if (KB.mode === 'jumping') {
+      if (e.key === 'Escape') { e.preventDefault(); kbReset('已重置'); }
+      return;
+    }
+    if (KB.mode === 'counting') {
+      if (e.key === 'Escape') { e.preventDefault(); kbReset('已取消'); }
+      else if (e.key === 'Enter') { e.preventDefault(); kbDoJump(); }
+      return;
+    }
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      if (KB.buffer.length >= KB.codeLen) return;
+      KB.buffer += e.key;
+      updateKbUI();
+      if (KB.buffer.length === KB.codeLen) kbStartCountdown();
+      return;
+    }
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      KB.buffer = KB.buffer.slice(0, -1);
+      updateKbUI();
+      return;
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      kbReset('已取消');
+    }
+  });
+
+  /* ================= 统一设置 ================= */
+  function syncSettingsUI() {
+    document.getElementById('titleInput').value = lockConfig.customTexts.title;
+    document.getElementById('emergencyInput').value = lockConfig.customTexts.emergency;
+    document.getElementById('deleteInput').value = lockConfig.customTexts.delete;
+
+    document.getElementById('autoSwitch').classList.toggle('on', lockConfig.autoCopy);
+    document.getElementById('exitSwitch').classList.toggle('on', lockConfig.exitOnComplete);
+    document.getElementById('breatheSwitch').classList.toggle('on', lockConfig.breathe);
+
+    document.querySelectorAll('input[name="len"]').forEach(function(r) {
+      r.checked = (Number(r.value) === lockConfig.inputLength);
+    });
+    document.querySelectorAll('input[name="appTheme"]').forEach(function(r) {
+      r.checked = (r.value === lockConfig.appTheme);
+    });
+
+    renderKbLenSeg();
+    document.getElementById('kbDelaySetting').value = KB.delay;
+    document.getElementById('kbAppendSwitch').classList.toggle('on', KB.appendInput);
+    document.querySelectorAll('input[name="kbTypeSetting"]').forEach(function(r) {
+      r.checked = (r.value === KB.jumpType);
+    });
+
+    renderPresetShortcuts();
+    renderPresetUrls();
+    renderLibs();
+    renderMapItems();
+    renderDigitControls();
+    renderCurrentPresetSelect();
+    updateCurrentPresetLabel();
+    document.getElementById('lockJumpSeconds').value = lockConfig.mainScreenBehavior.lockJumpSeconds || 3;
+    updateDigitExtraVisibility();
+
+    applyLockStyles();
+  }
+
+  document.getElementById('closeSettings').addEventListener('click', function() {
+    document.getElementById('settings').classList.remove('show');
+  });
+  document.getElementById('closeSettingsBottom').addEventListener('click', function() {
+    document.getElementById('settings').classList.remove('show');
+  });
+
+  /* 设置面板：顶部分区卡片切换 */
+  var settingsMenuCards = document.querySelectorAll('.menu-card');
+  var settingsAreas = document.querySelectorAll('.content-area');
+  settingsMenuCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      var targetArea = document.getElementById(card.getAttribute('data-target'));
+      var section = card.closest('.menu-section');
+      // 再次点击当前展开的分区：收起
+      if (card.classList.contains('active')) {
+        card.classList.remove('active');
+        if (section) section.classList.remove('active');
+        if (targetArea) targetArea.classList.remove('active');
+        return;
+      }
+      settingsMenuCards.forEach(function(c) { c.classList.remove('active'); });
+      settingsAreas.forEach(function(a) { a.classList.remove('active'); });
+      document.querySelectorAll('.menu-section').forEach(function(s) { s.classList.remove('active'); });
+      card.classList.add('active');
+      if (section) section.classList.add('active');
+      if (targetArea) targetArea.classList.add('active');
+      // 展开后若被顶出可视区，自动把该分区滚到顶部
+      var grid = document.querySelector('.top-menu-grid');
+      if (grid && section) {
+        setTimeout(function() {
+          var sr = section.getBoundingClientRect(), gr = grid.getBoundingClientRect();
+          if (sr.bottom > gr.bottom || sr.top < gr.top) {
+            grid.scrollTop = grid.scrollTop + (sr.top - gr.top);
+          }
+        }, 60);
+      }
+    });
+  });
+
+  document.getElementById('titleInput').addEventListener('input', function() {
+    lockConfig.customTexts.title = this.value || lockDefaults.customTexts.title;
+    applyLockCustomTexts();
+    saveLockConfig();
+  });
+  document.getElementById('emergencyInput').addEventListener('input', function() {
+    lockConfig.customTexts.emergency = this.value || lockDefaults.customTexts.emergency;
+    applyLockCustomTexts();
+    saveLockConfig();
+  });
+  document.getElementById('deleteInput').addEventListener('input', function() {
+    lockConfig.customTexts.delete = this.value || lockDefaults.customTexts.delete;
+    applyLockCustomTexts();
+    saveLockConfig();
+  });
+
+  document.getElementById('autoSwitch').addEventListener('click', function() {
+    this.classList.toggle('on');
+    lockConfig.autoCopy = this.classList.contains('on');
+    saveLockConfig();
+  });
+  document.getElementById('exitSwitch').addEventListener('click', function() {
+    this.classList.toggle('on');
+    lockConfig.exitOnComplete = this.classList.contains('on');
+    saveLockConfig();
+  });
+  document.getElementById('breatheSwitch').addEventListener('click', function() {
+    this.classList.toggle('on');
+    lockConfig.breathe = this.classList.contains('on');
+    saveLockConfig();
+  });
+
+  document.querySelectorAll('input[name="appTheme"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      lockConfig.appTheme = document.querySelector('input[name="appTheme"]:checked').value;
+      saveLockConfig();
+      applyLockStyles();
+    });
+  });
+  function currentPresetLabel() {
+    if (KB.jumpType === 'none') return '不跳转';
+    var name = KB.jumpType === 'shortcut' ? (kbCurrentShortcut || '未选择') : (kbCurrentUrl || '未选择');
+    var type = KB.jumpType === 'shortcut' ? '魔术预设' : 'URL预设';
+    return type + ' · ' + name;
+  }
+
+  function updateCurrentPresetLabel() {
+    var el = document.getElementById('currentPresetValue');
+    if (el) {
+      el.textContent = currentPresetLabel();
+      el.title = currentPresetLabel();
+    }
+  }
+
+  function renderCurrentPresetSelect() {
+    var sel = document.getElementById('currentPresetSelect');
+    var row = document.getElementById('currentPresetRow');
+    if (!sel) return;
+    if (row) row.style.display = (KB.jumpType === 'none') ? 'none' : '';
+    sel.innerHTML = '';
+    if (KB.jumpType === 'none') { sel.disabled = true; return; }
+    sel.disabled = false;
+    var list = KB.jumpType === 'shortcut'
+      ? KB_SHORTCUTS.slice()
+      : KB_URLS.map(function(u) { return u.name; });
+    var cur = KB.jumpType === 'shortcut' ? kbCurrentShortcut : kbCurrentUrl;
+    list.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      if (name === cur) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderDigitControls() {
+    var sel = document.getElementById('digitCountSelect');
+    if (sel) {
+      sel.innerHTML = '';
+      for (var n = 1; n <= 12; n++) {
+        var opt = document.createElement('option');
+        opt.value = n;
+        opt.textContent = n + ' 位';
+        if (Number(KB.digitCount) === n) opt.selected = true;
+        sel.appendChild(opt);
+      }
+    }
+    document.querySelectorAll('input[name="digitMode"]').forEach(function(r) {
+      r.checked = (r.value === (KB.digitMode || 'all'));
+    });
+    updateDigitCountState();
+  }
+
+  function updateDigitExtraVisibility() {
+    var row = document.getElementById('digitExtraRow');
+    if (row) row.style.display = KB.appendInput ? 'flex' : 'none';
+  }
+
+  function applyKbBlackout() {
+    var bo = document.getElementById('kbBlackout');
+    if (bo) bo.classList.toggle('on', !!KB.blackout);
+    var sw = document.getElementById('kbBlackoutSwitch');
+    if (sw) sw.classList.toggle('on', !!KB.blackout);
+  }
+
+  function updateDigitCountState() {
+    var sel = document.getElementById('digitCountSelect');
+    if (!sel) return;
+    var all = (KB.digitMode || 'all') === 'all';
+    sel.disabled = all;
+    sel.style.opacity = all ? '0.45' : '1';
+  }
+
+  function renderKbLenSeg() {
+    var wrap = document.getElementById('kbLenSegWrap');
+    wrap.innerHTML = '';
+    for (var n = 1; n <= 12; n++) {
+      (function(num) {
+        var label = document.createElement('label');
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'kbLenSetting';
+        input.value = num;
+        if (num === KB.codeLen) input.checked = true;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(num + ' 位'));
+        input.addEventListener('change', function() {
+          KB.codeLen = num;
+          kbSave();
+          updateKbUI();
+          kbSetHint(defaultKbHint());
+        });
+        wrap.appendChild(label);
+      })(n);
+    }
+  }
+
+  document.getElementById('lockJumpSeconds').addEventListener('input', function() {
+    var v = parseInt(this.value, 10);
+    if (!(v >= 0)) return;
+    lockConfig.mainScreenBehavior.lockJumpSeconds = Math.max(0, Math.min(60, v));
+    saveLockConfig();
+  });
+
+  document.getElementById('kbDelaySetting').addEventListener('change', function() {
+    var d = parseInt(this.value, 10);
+    if (!(d >= 0)) d = 0;
+    if (d > 60) d = 60;
+    this.value = d;
+    KB.delay = d;
+    kbSave();
+    updateKbUI();
+  });
+
+  document.querySelectorAll('input[name="digitMode"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      KB.digitMode = document.querySelector('input[name="digitMode"]:checked').value;
+      kbSave();
+      updateDigitCountState();
+    });
+  });
+
+  document.getElementById('digitCountSelect').addEventListener('change', function() {
+    KB.digitCount = parseInt(this.value, 10) || 1;
+    kbSave();
+  });
+
+  document.getElementById('currentPresetSelect').addEventListener('change', function() {
+    if (KB.jumpType === 'none') return;
+    if (KB.jumpType === 'shortcut') kbCurrentShortcut = this.value;
+    else kbCurrentUrl = this.value;
+    kbSave();
+    updateCurrentPresetLabel();
+    updateKbUI();
+    var hidden = document.getElementById(KB.jumpType === 'shortcut' ? 'presetShortcutSelect' : 'presetUrlSelect');
+    if (hidden) hidden.value = this.value;
+  });
+
+  document.getElementById('kbAppendSwitch').addEventListener('click', function() {
+    this.classList.toggle('on');
+    KB.appendInput = this.classList.contains('on');
+    kbSave();
+    updateDigitExtraVisibility();
+  });
+
+  document.querySelectorAll('input[name="kbTypeSetting"]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      KB.jumpType = document.querySelector('input[name="kbTypeSetting"]:checked').value;
+      kbSave();
+      renderCurrentPresetSelect();
+      updateCurrentPresetLabel();
+      updateKbUI();
+      updateMapPreview();
+    });
+  });
+
+  function renderPresetShortcuts() {
+    var list = document.getElementById('presetShortcutList');
+    var sel = document.getElementById('presetShortcutSelect');
+    list.innerHTML = '';
+    sel.innerHTML = '';
+
+    KB_SHORTCUTS.forEach(function(name, idx) {
+      var item = document.createElement('div');
+      item.className = 'preset-item';
+      var span = document.createElement('span');
+      span.className = 'pname';
+      span.textContent = name;
+      item.appendChild(span);
+
+      var del = document.createElement('button');
+      del.className = 'pbtn del';
+      del.textContent = '🗑';
+      del.addEventListener('click', function() {
+        if (KB_SHORTCUTS.length <= 1) return;
+        KB_SHORTCUTS.splice(idx, 1);
+        if (kbCurrentShortcut === name) kbCurrentShortcut = KB_SHORTCUTS[0] || '';
+        kbSave();
+        renderPresetShortcuts();
+      });
+      item.appendChild(del);
+      list.appendChild(item);
+
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      if (name === kbCurrentShortcut) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    updateCurrentPresetLabel();
+    renderCurrentPresetSelect();
+  }
+
+  document.getElementById('presetShortcutAddBtn').addEventListener('click', function() {
+    var input = document.getElementById('presetShortcutInput');
+    var name = input.value.trim();
+    if (!name || KB_SHORTCUTS.indexOf(name) !== -1) return;
+    KB_SHORTCUTS.push(name);
+    input.value = '';
+    kbSave();
+    renderPresetShortcuts();
+  });
+
+  document.getElementById('presetShortcutSelect').addEventListener('change', function() {
+    kbCurrentShortcut = this.value;
+    kbSave();
+    updateCurrentPresetLabel();
+  });
+
+  function renderPresetUrls() {
+    var list = document.getElementById('presetUrlList');
+    var sel = document.getElementById('presetUrlSelect');
+    list.innerHTML = '';
+    sel.innerHTML = '';
+
+    KB_URLS.forEach(function(item, idx) {
+      var row = document.createElement('div');
+      row.className = 'preset-item';
+      var name = document.createElement('span');
+      name.className = 'pname';
+      name.textContent = item.name;
+      row.appendChild(name);
+      var url = document.createElement('span');
+      url.className = 'purl';
+      url.textContent = item.url;
+      row.appendChild(url);
+
+      var del = document.createElement('button');
+      del.className = 'pbtn del';
+      del.textContent = '🗑';
+      del.addEventListener('click', function() {
+        if (KB_URLS.length <= 1) return;
+        KB_URLS.splice(idx, 1);
+        if (kbCurrentUrl === item.name) kbCurrentUrl = KB_URLS[0] ? KB_URLS[0].name : '';
+        kbSave();
+        renderPresetUrls();
+      });
+      row.appendChild(del);
+      list.appendChild(row);
+
+      var opt = document.createElement('option');
+      opt.value = item.name;
+      opt.textContent = item.name;
+      if (item.name === kbCurrentUrl) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    updateCurrentPresetLabel();
+    renderCurrentPresetSelect();
+  }
+
+  document.getElementById('presetUrlAddBtn').addEventListener('click', function() {
+    var nameInput = document.getElementById('presetUrlNameInput');
+    var name = nameInput.value.trim();
+    if (!name || KB_URLS.some(function(u) { return u.name === name; })) return;
+    var url = prompt('请输入网址（可包含 {input}）', 'https://');
+    if (url === null) return;
+    url = url.trim();
+    if (!url) return;
+    KB_URLS.push({ name: name, url: url });
+    nameInput.value = '';
+    kbSave();
+    renderPresetUrls();
+  });
+
+  document.getElementById('presetUrlSelect').addEventListener('change', function() {
+    kbCurrentUrl = this.value;
+    kbSave();
+    updateCurrentPresetLabel();
+  });
+
+  function renderLibs() {
+    var sel = document.getElementById('libSelect');
+    sel.innerHTML = '';
+    KB_LIBS.forEach(function(lib, idx) {
+      var opt = document.createElement('option');
+      opt.value = idx;
+      opt.textContent = lib.name + '（' + lib.items.length + '）';
+      if (idx === kbCurrentLibIndex) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    var kbSw = document.getElementById('kbMapSwitch');
+    if (kbSw) kbSw.classList.toggle('on', !!KB.mapEnabled);
+    renderKbLibSelect();
+  }
+
+  /* 键盘页：开启文本替换后在这里显示当前 index 词库，并可直接切换 */
+  function renderKbLibSelect() {
+    var sel = document.getElementById('kbLibSelect');
+    var wrap = document.getElementById('kbLibPick');
+    if (!sel || !wrap) return;
+    sel.innerHTML = '';
+    KB_LIBS.forEach(function(lib, idx) {
+      var opt = document.createElement('option');
+      opt.value = idx;
+      opt.textContent = lib.name;
+      if (idx === kbCurrentLibIndex) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    wrap.classList.toggle('show', !!KB.mapEnabled);
+  }
+
+  var kbLibSelectEl = document.getElementById('kbLibSelect');
+  if (kbLibSelectEl) {
+    kbLibSelectEl.addEventListener('change', function() {
+      kbCurrentLibIndex = parseInt(this.value, 10) || 0;
+      kbSave();
+      renderMapItems();
+      renderLibs();
+      updateMapPreview();
+    });
+  }
+
+  document.getElementById('libSelect').addEventListener('change', function() {
+    kbCurrentLibIndex = parseInt(this.value);
+    kbSave();
+    renderMapItems();
+  });
+
+
+
+  function renderMapItems() {
+    var list = document.getElementById('mapList');
+    list.innerHTML = '';
+    var lib = currentLib();
+    lib.items.forEach(function(item, idx) {
+      var row = document.createElement('div');
+      row.className = 'preset-item';
+      var key = document.createElement('span');
+      key.className = 'pname';
+      key.textContent = item.key;
+      row.appendChild(key);
+      var val = document.createElement('span');
+      val.className = 'purl';
+      val.textContent = '→ ' + item.value;
+      row.appendChild(val);
+
+      var del = document.createElement('button');
+      del.className = 'pbtn del';
+      del.textContent = '🗑';
+      del.addEventListener('click', function() {
+        lib.items.splice(idx, 1);
+        kbSave();
+        renderMapItems();
+        renderLibs();
+      });
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+  }
+
+  document.getElementById('mapAddBtn').addEventListener('click', function() {
+    var keyInput = document.getElementById('mapKeyInput');
+    var valInput = document.getElementById('mapValInput');
+    var key = keyInput.value.trim();
+    var value = valInput.value.trim();
+    if (!key || !value || !/^[0-9]+$/.test(key)) return;
+    var lib = currentLib();
+    var exists = lib.items.find(function(o) { return o.key === key; });
+    if (exists) exists.value = value;
+    else lib.items.push({ key: key, value: value });
+    keyInput.value = '';
+    valInput.value = '';
+    kbSave();
+    renderMapItems();
+    renderLibs();
+  });
+
+  document.getElementById('libAddBtn').addEventListener('click', function() {
+    var name = prompt('请输入新词库名称', '我的词库');
+    if (!name) return;
+    name = name.trim();
+    if (!name || KB_LIBS.some(function(l) { return l.name === name; })) return;
+    KB_LIBS.push({ name: name, items: [] });
+    kbCurrentLibIndex = KB_LIBS.length - 1;
+    kbSave();
+    renderLibs();
+    renderMapItems();
+  });
+
+  document.getElementById('libRenameBtn').addEventListener('click', function() {
+    var lib = currentLib();
+    var name = prompt('请输入新的词库名称', lib.name);
+    if (!name) return;
+    name = name.trim();
+    if (!name || KB_LIBS.some(function(l, i) { return i !== kbCurrentLibIndex && l.name === name; })) return;
+    lib.name = name;
+    kbSave();
+    renderLibs();
+  });
+
+  /* ================= 图片压缩与上传（修复三张图保存） ================= */
+  function compressImage(file, maxWidth, maxHeight, quality, callback) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        var width = img.width;
+        var height = img.height;
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.round(height * maxWidth / width);
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.round(width * maxHeight / height);
+            height = maxHeight;
+          }
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        var dataUrl = canvas.toDataURL('image/jpeg', quality);
+        callback(dataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function handleUpload(inputId, key) {
+    document.getElementById(inputId).addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      compressImage(file, 1170, 2532, 0.75, function(compressedBase64) {
+        lockConfig[key] = compressedBase64;
+        saveLockConfig();
+        applyLockStyles();   // applyLockStyles 内部已包含三张缩略图恢复
+        e.target.value = '';
+      });
+    });
+  }
+  handleUpload('lockImagePicker', 'bgLock');
+  handleUpload('bgFile', 'bgScreen');
+  handleUpload('mainFile', 'bgMain');
+
+  window.clearAllImages = function() {
+    lockConfig.bgLock = null;
+    lockConfig.bgScreen = null;
+    lockConfig.bgMain = null;
+    saveLockConfig();
+    applyLockStyles();
+  };
+
+  /* ================= 跳转区域编辑器 ================= */
+  var positionEditor = document.getElementById('positionEditor');
+  var previewArea = document.getElementById('previewArea');
+  var resizableArea = document.getElementById('resizableArea');
+
+  var editPositionBtnEl = document.getElementById('editPositionBtn');
+  if (editPositionBtnEl) {
+    editPositionBtnEl.addEventListener('click', function() {
+      positionEditor.classList.add('show');
+      initPositionEditor();
+    });
+  }
+  document.getElementById('closePositionEditor').addEventListener('click', function() {
+    positionEditor.classList.remove('show');
+  });
+  positionEditor.addEventListener('click', function(e) {
+    if (e.target === positionEditor) positionEditor.classList.remove('show');
+  });
+
+  function initPositionEditor() {
+    var area = lockConfig.mainScreenBehavior.jumpArea;
+    if (lockConfig.bgMain) previewArea.style.backgroundImage = 'url(' + lockConfig.bgMain + ')';
+
+    var previewRect = previewArea.getBoundingClientRect();
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    var scaleX = previewRect.width / screenWidth;
+    var scaleY = previewRect.height / screenHeight;
+
+    resizableArea.style.left = (area.x * scaleX) + 'px';
+    resizableArea.style.top = (area.y * scaleY) + 'px';
+    resizableArea.style.width = (area.width * scaleX) + 'px';
+    resizableArea.style.height = (area.height * scaleY) + 'px';
+
+    var isDragging = false, isResizing = false;
+    var startX, startY, startLeft, startTop, startWidth, startHeight;
+
+    function getPoint(e) {
+      return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY };
+    }
+
+    resizableArea.onmousedown = startDrag;
+    resizableArea.ontouchstart = startDrag;
+
+    function startDrag(e) {
+      if (e.target.classList.contains('resize-handle')) return;
+      e.preventDefault(); e.stopPropagation();
+      isDragging = true;
+      startLeft = parseFloat(resizableArea.style.left) || 0;
+      startTop = parseFloat(resizableArea.style.top) || 0;
+      var p = getPoint(e); startX = p.x; startY = p.y;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag, { passive: false });
+      document.addEventListener('mouseup', stopDrag);
+      document.addEventListener('touchend', stopDrag);
+    }
+    function drag(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var p = getPoint(e);
+      var dx = p.x - startX, dy = p.y - startY;
+      var pr = previewArea.getBoundingClientRect();
+      var maxX = pr.width - resizableArea.offsetWidth;
+      var maxY = pr.height - resizableArea.offsetHeight;
+      resizableArea.style.left = Math.max(0, Math.min(maxX, startLeft + dx)) + 'px';
+      resizableArea.style.top = Math.max(0, Math.min(maxY, startTop + dy)) + 'px';
+    }
+    function stopDrag() {
+      isDragging = false;
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('touchmove', drag);
+      document.removeEventListener('mouseup', stopDrag);
+      document.removeEventListener('touchend', stopDrag);
+    }
+
+    var handle = resizableArea.querySelector('.resize-handle');
+    handle.onmousedown = startResize;
+    handle.ontouchstart = startResize;
+    function startResize(e) {
+      e.preventDefault(); e.stopPropagation();
+      isResizing = true;
+      startWidth = resizableArea.offsetWidth;
+      startHeight = resizableArea.offsetHeight;
+      var p = getPoint(e); startX = p.x; startY = p.y;
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('touchmove', resize, { passive: false });
+      document.addEventListener('mouseup', stopResize);
+      document.addEventListener('touchend', stopResize);
+    }
+    function resize(e) {
+      if (!isResizing) return;
+      e.preventDefault();
+      var p = getPoint(e);
+      var dx = p.x - startX, dy = p.y - startY;
+      var pr = previewArea.getBoundingClientRect();
+      var maxW = pr.width - parseFloat(resizableArea.style.left);
+      var maxH = pr.height - parseFloat(resizableArea.style.top);
+      resizableArea.style.width = Math.max(50, Math.min(maxW, startWidth + dx)) + 'px';
+      resizableArea.style.height = Math.max(50, Math.min(maxH, startHeight + dy)) + 'px';
+    }
+    function stopResize() {
+      isResizing = false;
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('touchmove', resize);
+      document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('touchend', stopResize);
+    }
+  }
+
+  document.getElementById('savePosition').addEventListener('click', function() {
+    var pr = previewArea.getBoundingClientRect();
+    var ar = resizableArea.getBoundingClientRect();
+    var scaleX = window.innerWidth / pr.width;
+    var scaleY = window.innerHeight / pr.height;
+    lockConfig.mainScreenBehavior.jumpArea = {
+      x: (ar.left - pr.left) * scaleX,
+      y: (ar.top - pr.top) * scaleY,
+      width: ar.width * scaleX,
+      height: ar.height * scaleY
+    };
+    saveLockConfig();
+    applyJumpArea();
+    setupLockMainScreenEvents();
+    positionEditor.classList.remove('show');
+  });
+  document.getElementById('resetPosition').addEventListener('click', function() {
+    lockConfig.mainScreenBehavior.jumpArea = Object.assign({}, lockDefaults.mainScreenBehavior.jumpArea);
+    saveLockConfig();
+    applyJumpArea();
+    setupLockMainScreenEvents();
+    initPositionEditor();
+  });
+
+  /* ================= 主界面按钮 ================= */
+  document.getElementById('btnLock').addEventListener('click', function() {
+    document.getElementById('screen').style.display = 'none';
+    document.getElementById('mainscreen').style.display = 'none';
+    document.getElementById('mainscreen').classList.remove('breathe');
+    document.getElementById('lockScreen').style.display = 'block';
+    codeArr = [];
+    updateDots();
+    applyLockCustomTexts();
+    applyLockStyles();
+    showPage('lockPage');
+  });
+
+  document.getElementById('btnKeyboard').addEventListener('click', function() {
+    showPage('keyboardPage');
+    renderKbLibSelect();
+    kbSetHint(defaultKbHint());
+    updateKbUI();
+  });
+
+  document.getElementById('btnSettings').addEventListener('click', function() {
+    syncSettingsUI();
+    /* 每次打开都是四张卡片的收起态，不自动展开任何一项 */
+    document.querySelectorAll('.menu-card').forEach(function(c) { c.classList.remove('active'); });
+    document.querySelectorAll('.content-area').forEach(function(a) { a.classList.remove('active'); });
+    document.querySelectorAll('.menu-section').forEach(function(s) { s.classList.remove('active'); });
+    var grid = document.querySelector('.top-menu-grid');
+    if (grid) grid.scrollTop = 0;
+    document.getElementById('settings').classList.add('show');
+  });
+
+  document.getElementById('kbBackBtn').addEventListener('click', function() {
+    if (KB.mode !== 'idle') kbReset('已取消');
+    showPage('homePage');
+  });
+
+  /* 初始化 */
+  KB.mode = 'idle';
+  KB.buffer = '';
+  KB.timer = null;
+  KB.finalUrl = '';
+
+  applyLockCustomTexts();
+  rebuildLockUI();
+  applyLockStyles();
+  setupLockMainScreenEvents();
+  applyJumpArea();
+
+  updateKbUI();
+  applyKbBlackout();
+  renderKbLibSelect();
+  kbSetHint(defaultKbHint());
+
+  /* 离开当前页面（切到后台/切标签/锁屏）时整屏熄灭，回来即恢复 */
+  (function () {
+    function setup() {
+      var bo = document.getElementById('screenBlackout');
+      if (!bo) return;
+      function blank(on) { bo.classList.toggle('on', on); }
+      /* 尽可能早地变黑：blur 往往比 visibilitychange 更早触发 */
+      window.addEventListener('blur', function () { blank(true); });
+      document.addEventListener('visibilitychange', function () {
+        blank(!!document.hidden);
+      });
+      window.addEventListener('pagehide', function () { blank(true); });
+      document.addEventListener('freeze', function () { blank(true); });
+      window.addEventListener('pageshow', function () { blank(false); });
+      window.addEventListener('focus', function () {
+        if (!document.hidden) blank(false);
+      });
+    }
+    /* 防误黑：页面内任何按下操作若发现已黑且当前页面仍有焦点，立即恢复 */
+    document.addEventListener('pointerdown', function () {
+      var bo = document.getElementById('screenBlackout');
+      if (!bo || !bo.classList.contains('on')) return;
+      if (!document.hidden) bo.classList.remove('on');
+    }, true);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else {
+      setup();
+    }
+  })();
+
+  showPage('homePage');
+  document.getElementById('lockScreen').style.display = 'block';
+  document.getElementById('screen').style.display = 'none';
+  document.getElementById('mainscreen').style.display = 'none';
+
+})();
+</script>
+
+<div id="screenBlackout"></div>
+</body>
+</html><script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="cffe1d81-6890-429f-8b3d-c77630781128" data-app-host="app.netlify.com" data-account-tier="free"></script>
+<!-- （注：内容由AI生成） -->
