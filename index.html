@@ -4,13 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>MysterBox 控制台</title>
-<meta name="theme-color" content="#0f0f0f">
-<!-- PWA 核心 Meta -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Box控">
-<link rel="manifest" href="./manifest.json">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #0f0f0f; color: #e8e8e8; max-width: 720px; margin: 0 auto; padding: 20px 16px 80px; }
@@ -24,10 +17,7 @@
   button:hover { background: #3b7cf0; }
   button:disabled { background: #333; color: #666; cursor: not-allowed; }
   button.secondary { background: #2a2a2a; border: 1px solid #444; }
-  button.secondary:hover { background: #3a3a3a; }
-  textarea, input[type=text], input[type=number], input[type=file] { background: #0d0d0d; border: 1px solid #333; color: #eee; border-radius: 8px; padding: 10px 12px; font-size: 0.9rem; font-family: inherit; width: 100%; outline: none; }
-  textarea:focus, input:focus { border-color: #2d6cdf; }
-  textarea { resize: vertical; min-height: 60px; }
+  textarea, input[type=text], input[type=file] { background: #0d0d0d; border: 1px solid #333; color: #eee; border-radius: 8px; padding: 10px 12px; font-size: 0.9rem; font-family: inherit; width: 100%; outline: none; }
   label { font-size: 0.8rem; color: #888; display: block; margin-bottom: 4px; }
   .field { margin-bottom: 10px; }
   .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
@@ -41,24 +31,20 @@
   .preview-wrap img { max-width: 100%; max-height: 160px; border-radius: 8px; border: 1px solid #333; }
   .size-tag { font-size: 0.75rem; color: #888; margin-top: 4px; }
   .text-muted { color: #666; font-size: 0.8rem; }
-  
-  /* 剪贴板提示横幅 */
   #clipboardBanner {
     display: none; background: #2d6cdf; color: white; padding: 12px;
     border-radius: 8px; margin-bottom: 14px; text-align: center;
-    font-weight: bold; cursor: pointer; animation: pulse 1.5s infinite;
+    font-weight: bold; cursor: pointer;
   }
-  @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 </style>
 </head>
 <body>
 
 <h1>MysterBox 控制台</h1>
-<p class="sub">PWA 模式 · 支持剪贴板唤醒</p>
+<p class="sub">Safari + beacio 专用版</p>
 
-<!-- 剪贴板自动提示 -->
 <div id="clipboardBanner" onclick="sendClipboardContent()">
-  📋 检测到新内容，点击发送
+  📋 点击发送剪贴板内容
 </div>
 
 <div class="card">
@@ -69,7 +55,7 @@
     <span id="connBadge" class="status-badge off">未连接</span>
   </div>
   <div id="deviceInfo" class="text-muted" style="margin-bottom:10px">设备信息：—</div>
-  <div id="logBox" class="log" style="margin-top:10px">日志就绪。请先连接蓝牙。</div>
+  <div id="logBox" class="log" style="margin-top:10px">日志就绪。</div>
 </div>
 
 <div class="card" id="textCard" style="opacity:.5;pointer-events:none">
@@ -95,13 +81,11 @@
     <div class="size-tag" id="sizeTag"></div>
   </div>
   <div class="row">
-    <button id="btnUpload" disabled>上传图片</button>
-    <button id="btnShowImage" class="secondary">显示图片</button>
+    <button id="btnUpload" disabled>上传并显示图片</button>
   </div>
 </div>
 
 <script>
-// ================= 常量 =================
 const SVC_UUID      = '7a1d0001-3b6e-4f2a-9c4d-2e8f1a5b0c01';
 const CMD_UUID      = '7a1d0002-3b6e-4f2a-9c4d-2e8f1a5b0c01';
 const EVENT_UUID    = '7a1d0003-3b6e-4f2a-9c4d-2e8f1a5b0c01';
@@ -113,7 +97,6 @@ let cmdChar=null, eventChar=null, statusChar=null, transferChar=null;
 let mtu=23, screenW=368, screenH=448, connected=false;
 let uploadResolve=null, uploadReject=null;
 
-// ================= 日志 =================
 const logBox = document.getElementById('logBox');
 function log(msg, cls='') {
   const line = document.createElement('div');
@@ -123,12 +106,11 @@ function log(msg, cls='') {
   logBox.scrollTop = logBox.scrollHeight;
 }
 
-// ================= 连接 =================
 document.getElementById('btnConnect').addEventListener('click', connect);
 document.getElementById('btnDisconnect').addEventListener('click', disconnect);
 
 async function connect() {
-  if (!navigator.bluetooth) { log('当前环境不支持蓝牙，请使用 iOS 的 Bluefy 或原生 PWA。', 'err'); return; }
+  if (!navigator.bluetooth) { log('蓝牙不可用，请确认 beacio 扩展已开启。', 'err'); return; }
   try {
     log('正在扫描...', 'info');
     bleDevice = await navigator.bluetooth.requestDevice({ filters: [{ name: 'MysterBox' }], optionalServices: [SVC_UUID] });
@@ -156,6 +138,11 @@ async function connect() {
   } catch(err) { log('连接失败：' + err.message, 'err'); }
 }
 
+async function disconnect() {
+  if (bleDevice && bleDevice.gatt.connected) bleDevice.gatt.disconnect();
+  onDisconnected();
+}
+
 function onDisconnected() {
   connected = false;
   setUIConnected(false);
@@ -173,7 +160,6 @@ function setUIConnected(state) {
   });
 }
 
-// ================= 核心指令 =================
 async function writeCommand(bytes) {
   if (!connected || !cmdChar) throw new Error('未连接');
   await cmdChar.writeValueWithoutResponse(new Uint8Array(bytes));
@@ -182,8 +168,7 @@ async function writeCommand(bytes) {
 async function sendTextValue(text) {
   const textBytes = new TextEncoder().encode(text);
   const buf = new Uint8Array(1 + textBytes.length);
-  buf[0] = 0x01; 
-  buf.set(textBytes, 1);
+  buf[0] = 0x01; buf.set(textBytes, 1);
   await writeCommand(buf);
   log(`已发送文字：${text}`, 'ok');
 }
@@ -197,7 +182,6 @@ document.getElementById('btnClearScreen').addEventListener('click', async () => 
   try { await writeCommand([0x02]); log('已清空', 'ok'); } catch(e) { log(e.message, 'err'); }
 });
 
-// ================= 图片上传（修复版） =================
 async function uploadFile(file, name) {
   const buffer = await file.arrayBuffer();
   const nameBytes = new TextEncoder().encode(name);
@@ -231,7 +215,6 @@ async function uploadFile(file, name) {
   if (result.arg !== 0) throw new Error(`错误码 ${result.arg}`);
   log(`上传成功！`, 'ok');
   
-  // 自动显示
   const buf = new Uint8Array(1 + nameBytes.length);
   buf[0] = 0x1A; buf.set(nameBytes, 1);
   await writeCommand(buf);
@@ -242,15 +225,13 @@ function onEventNotification(event) {
   const val = event.target.value;
   if (val.byteLength < 6) return;
   const type = val.getUint8(0);
-  const x = val.getUint16(1, true), y = val.getUint16(3, true);
   const arg = val.getUint8(5);
   if (type === 0x10 && uploadResolve) {
     const resolve = uploadResolve; uploadResolve = null; uploadReject = null;
-    resolve({ arg, bytes: (y << 16) | x });
+    resolve({ arg });
   }
 }
 
-// 手动上传图片UI
 const imageFileInput = document.getElementById('imageFile');
 const btnUpload = document.getElementById('btnUpload');
 imageFileInput.addEventListener('change', () => {
@@ -266,32 +247,32 @@ btnUpload.addEventListener('click', async () => {
   if(file) try { await uploadFile(file, 'img_' + Date.now() + '.jpg'); } catch(e) { log(e.message, 'err'); }
 });
 
-// ================= PWA 唤醒与剪贴板捕获 =================
+// ================= 剪贴板捕获机制 =================
 let lastClipboardText = "";
 
 async function checkClipboard() {
   if (!connected) return;
   try {
     const text = await navigator.clipboard.readText();
-    // 如果有新内容，且不是上次发送过的，弹出横幅提示
+    // 如果剪贴板有新内容
     if (text && text !== lastClipboardText) {
       lastClipboardText = text;
+      // 在 Safari 中，有时可以在非用户操作下读取，但为了保险，弹个提示
       const banner = document.getElementById('clipboardBanner');
       banner.style.display = 'block';
-      banner.textContent = `📋 点击发送剪贴板内容：${text.substring(0, 10)}...`;
+      banner.textContent = `📋 点击发送内容：${text.substring(0, 10)}...`;
     }
   } catch (err) {
-    // iOS 在非用户触发情况下可能拒绝读取剪贴板，静默失败即可
+    // iOS 如果拒绝读取会抛错，忽略即可
   }
 }
 
-// 提供给横幅点击调用的全局函数
 window.sendClipboardContent = async function() {
   document.getElementById('clipboardBanner').style.display = 'none';
   try {
     const text = await navigator.clipboard.readText();
     if (text) {
-      // 如果你复制的是图片URL，尝试下载；否则当文字发
+      // 简单的判断是不是网址
       if (text.startsWith('http') && (text.includes('.jpg') || text.includes('.png'))) {
         log('剪贴板是图片链接，正在下载...', 'info');
         const resp = await fetch(text);
@@ -304,20 +285,12 @@ window.sendClipboardContent = async function() {
   } catch(e) { log('剪贴板发送失败：' + e.message, 'err'); }
 };
 
-// 监听 App 回到前台
+// Safari 切回前台时自动检测
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
-    // 延迟 500ms 等系统稳定
-    setTimeout(checkClipboard, 500);
+    setTimeout(checkClipboard, 300);
   }
 });
-
-// ================= Service Worker =================
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW失败', err));
-  });
-}
 
 setUIConnected(false);
 </script>
