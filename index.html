@@ -37,8 +37,6 @@
   button:disabled { background: #333; color: #666; cursor: not-allowed; }
   button.secondary { background: #2a2a2a; border: 1px solid #444; }
   button.secondary:hover { background: #3a3a3a; }
-  button.danger { background: #a83232; }
-  button.danger:hover { background: #c04040; }
   textarea, input[type=text], input[type=number], input[type=file] {
     background: #0d0d0d; border: 1px solid #333; color: #eee;
     border-radius: 8px; padding: 10px 12px;
@@ -55,7 +53,6 @@
   }
   .status-badge.off { background: #331111; color: #cc5555; }
   .status-badge.on { background: #113311; color: #55cc55; }
-  .status-badge.wait { background: #332a11; color: #cca855; }
   .log {
     background: #0a0a0a; border-radius: 8px; padding: 10px 12px;
     font-family: ui-monospace, monospace; font-size: 0.75rem;
@@ -81,7 +78,6 @@
 <h1>MysterBox 控制台</h1>
 <p class="sub">蓝牙低功耗 · 文字 / 图片 · URL 指令</p>
 
-<!-- 连接 + 监听 -->
 <div class="card">
   <h2>连接与监听</h2>
   <div class="row" style="margin-bottom:10px">
@@ -103,11 +99,10 @@
   <div id="logBox" class="log" style="margin-top:10px">日志就绪。</div>
 </div>
 
-<!-- 文字 -->
 <div class="card" id="textCard" style="opacity:.5;pointer-events:none">
   <h2>文字显示</h2>
   <div class="field">
-    <label>输入文字（\n 换行）</label>
+    <label>输入文字（\n 换行，中文显示需用图片代替）</label>
     <textarea id="textInput" placeholder="Hello MysterBox">Hello MysterBox</textarea>
   </div>
   <div class="row" style="margin-bottom:10px">
@@ -126,11 +121,10 @@
   </div>
 </div>
 
-<!-- 图片 -->
 <div class="card" id="imageCard" style="opacity:.5;pointer-events:none">
   <h2>图片显示</h2>
   <div class="field">
-    <label>选择图片（JPEG / PNG，建议 &lt;80KB）</label>
+    <label>选择图片（JPEG / PNG，建议 &lt;80KB，分辨率 368x448）</label>
     <input type="file" id="imageFile" accept="image/jpeg,image/png">
   </div>
   <div class="preview-wrap" id="previewWrap" style="display:none">
@@ -145,28 +139,6 @@
     <button id="btnUpload" disabled>上传图片</button>
     <button id="btnShowImage" class="secondary">显示该图片</button>
     <button id="btnHideImage" class="secondary">隐藏图片</button>
-  </div>
-</div>
-
-<!-- 快捷 -->
-<div class="card" id="quickCard" style="opacity:.5;pointer-events:none">
-  <h2>快捷设置</h2>
-  <div class="row" style="margin-bottom:10px">
-    <div class="field" style="flex:1 1 80px">
-      <label>亮度 %</label>
-      <input type="number" id="brightness" min="0" max="100" value="50">
-    </div>
-    <div class="field" style="flex:1 1 80px">
-      <label>文字大小 px</label>
-      <input type="number" id="defaultTextPx" min="20" max="200" value="160" placeholder="0=默认">
-    </div>
-    <button id="btnApplyQuick" style="flex:0 0 auto;align-self:flex-end">应用</button>
-  </div>
-  <div class="row">
-    <button id="btnRotate0" class="secondary" style="font-size:.8rem">0°</button>
-    <button id="btnRotate1" class="secondary" style="font-size:.8rem">90°</button>
-    <button id="btnRotate2" class="secondary" style="font-size:.8rem">180°</button>
-    <button id="btnRotate3" class="secondary" style="font-size:.8rem">270°</button>
   </div>
 </div>
 
@@ -201,7 +173,7 @@ document.getElementById('btnDisconnect').addEventListener('click', disconnect);
 
 async function connect() {
   if (!navigator.bluetooth) {
-    log('当前环境不支持 Web Bluetooth。请在 Bluefy 或 Chrome 中通过 https:// 打开。', 'err');
+    log('当前环境不支持 Web Bluetooth。请使用 Bluefy。', 'err');
     return;
   }
   try {
@@ -220,7 +192,7 @@ async function connect() {
         mtu = await server.requestMTU(512);
         log(`MTU：${mtu}`, 'ok');
       }
-    } catch(e) { log('MTU 协商失败，使用默认值。', 'info'); }
+    } catch(e) { log('MTU 协商失败，使用默认值 23。', 'info'); }
 
     const svc = await server.getPrimaryService(SVC_UUID);
     cmdChar      = await svc.getCharacteristic(CMD_UUID);
@@ -257,7 +229,7 @@ function setUIConnected(state) {
   document.getElementById('connBadge').className = 'status-badge ' + (state ? 'on' : 'off');
   document.getElementById('btnConnect').disabled = state;
   document.getElementById('btnDisconnect').disabled = !state;
-  ['textCard','imageCard','quickCard'].forEach(id => {
+  ['textCard','imageCard'].forEach(id => {
     const el = document.getElementById(id);
     el.style.opacity = state ? '1' : '.5';
     el.style.pointerEvents = state ? 'auto' : 'none';
@@ -360,20 +332,26 @@ async function uploadFile(file, name) {
   await writeCommand(cmd);
   log(`已声明上传 "${name}"，${buffer.byteLength} 字节`, 'info');
 
+  // iOS 上 MTU 通常固定为 23，有效载荷为 20 字节
   const chunkSize = Math.max(20, mtu - 3);
   let offset = 0, packets = 0;
+
   while (offset < buffer.byteLength) {
-    const chunk = buffer.slice(offset, offset + chunkSize);
-    await transferChar.writeValueWithoutResponse(new Uint8Array(chunk));
-    offset += chunk.length;
+    // ✅ 关键修复：使用 Uint8Array 视图和 byteLength
+    const chunk = new Uint8Array(buffer, offset, Math.min(chunkSize, buffer.byteLength - offset));
+    await transferChar.writeValueWithoutResponse(chunk);
+    offset += chunk.byteLength;
     packets++;
+
+    // 流控探测
     if (packets % 32 === 0 && offset < buffer.byteLength) {
       await writeCommand(new Uint8Array([0x1A, ...new TextEncoder().encode('none.none')]));
       await new Promise(r => setTimeout(r, 15));
     }
   }
+  
   await writeCommand([0x19]);
-  log(`Transfer 完成（${packets} 包），等待确认...`, 'info');
+  log(`Transfer 完成（${packets} 包），等待设备确认...`, 'info');
 
   const result = await waitForUploadResult(8000);
   if (result.arg !== 0) {
@@ -460,29 +438,7 @@ function onEventNotification(event) {
   }
 }
 
-// ================= 快捷设置 =================
-document.getElementById('btnApplyQuick').addEventListener('click', async () => {
-  try {
-    const pct = parseInt(document.getElementById('brightness').value, 10);
-    if (!isNaN(pct) && pct>=0 && pct<=100) {
-      await writeCommand([0x03, pct]); log(`亮度 → ${pct}%`, 'ok');
-    }
-    const px = parseInt(document.getElementById('defaultTextPx').value, 10);
-    if (!isNaN(px) && (px===0 || (px>=20 && px<=200))) {
-      await writeCommand([0x05, px & 0xFF]); log(`文字大小 → ${px===0?'默认':px+'px'}`, 'ok');
-    }
-  } catch(e) { log('设置失败：' + e.message, 'err'); }
-});
-
-[0,1,2,3].forEach(n => {
-  const btn = document.getElementById(`btnRotate${n}`);
-  if (btn) btn.addEventListener('click', async () => {
-    try { await writeCommand([0x0F, n]); log(`旋转 → ${n*90}°`, 'ok'); }
-    catch(e) { log('旋转失败：' + e.message, 'err'); }
-  });
-});
-
-// ================= URL 指令队列 =================
+// ================= URL 指令与心跳保活 =================
 function handleIncoming(cmd) {
   if (!connected) { log('收到指令但蓝牙未连接，已丢弃：' + JSON.stringify(cmd), 'err'); return; }
   let p = Promise.resolve();
@@ -518,18 +474,20 @@ document.getElementById('btnStartListen').addEventListener('click', () => {
   document.getElementById('btnStartListen').disabled = true;
   document.getElementById('btnStopListen').disabled = false;
   window.addEventListener('storage', onStorageChange);
+  
   try {
     if (!bc) {
       bc = new BroadcastChannel('mysterbox');
       bc.onmessage = e => {
-        // 只处理其他标签页的广播，自己写入的不重复处理
         if (e.data && e.data.type) checkQueue();
       };
     }
-  } catch(e) { /* 旧浏览器忽略 */ }
+  } catch(e) {}
+
+  // 每 500ms 轮询一次（作为兜底）
   pollTimer = setInterval(checkQueue, 500);
   checkQueue();
-  log('已开始监听 URL 指令。', 'ok');
+  log('已开始监听 URL 指令。（建议保持此页面在前台）', 'ok');
 });
 
 document.getElementById('btnStopListen').addEventListener('click', () => {
@@ -543,13 +501,14 @@ document.getElementById('btnStopListen').addEventListener('click', () => {
   log('已停止监听。', 'info');
 });
 
-// 页面加载时解析 URL 指令，入队并清理地址
+// ✅ 修复：页面加载时解析 URL。如果是快捷指令触发，先保存 URL 参数，再清空地址栏，最后自动重连！
 (function enqueueFromUrl() {
   const params = new URLSearchParams(location.search);
   let type=null, value=null;
   if (params.has('text'))  { type='text';  value=params.get('text'); }
   else if (params.has('photo')) { type='photo'; value=params.get('photo'); }
   else if (params.has('show'))  { type='show';  value=params.get('show'); }
+  
   if (!type || !value) return;
 
   const cmd = {
@@ -559,10 +518,17 @@ document.getElementById('btnStopListen').addEventListener('click', () => {
   if (params.has('px'))    cmd.px = params.get('px');
   if (params.has('color')) cmd.color = params.get('color');
 
+  // 写入队列
   localStorage.setItem(QUEUE_KEY, JSON.stringify(cmd));
-  try { if (bc) bc.postMessage(cmd); } catch(e) {}
+  
+  // 清理地址栏（避免刷新重复发）
   history.replaceState({}, '', location.pathname);
-  log('检测到 URL 指令，已入队。连接蓝牙后点击「开始监听」即可发送。', 'info');
+  
+  // 如果是快捷指令重新唤起了页面，这里直接触发一次检查
+  setTimeout(() => {
+    checkQueue();
+    log('检测到 URL 指令，已触发。如未连接请先点击上方按钮连接。', 'info');
+  }, 500);
 })();
 
 // ================= Service Worker =================
@@ -570,13 +536,13 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
       .then(() => console.log('SW 已注册'))
-      .catch(err => console.warn('SW 注册失败（不影响蓝牙）', err));
+      .catch(err => console.warn('SW 注册失败', err));
   });
 }
 
 // ================= 初始化 =================
 setUIConnected(false);
-log('准备就绪。连接 MysterBox 后点击「开始监听 URL 指令」。', 'info');
+log('准备就绪。若从快捷指令打开，请先连接蓝牙，并点击「开始监听」。', 'info');
 </script>
 </body>
 </html>
