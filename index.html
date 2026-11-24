@@ -31,31 +31,30 @@
   .preview-wrap img { max-width: 100%; max-height: 160px; border-radius: 8px; border: 1px solid #333; }
   .size-tag { font-size: 0.75rem; color: #888; margin-top: 4px; }
   .text-muted { color: #666; font-size: 0.8rem; }
-  #clipboardBanner {
-    display: none; background: #2d6cdf; color: white; padding: 12px;
-    border-radius: 8px; margin-bottom: 14px; text-align: center;
-    font-weight: bold; cursor: pointer;
-  }
 </style>
 </head>
 <body>
 
 <h1>MysterBox 控制台</h1>
-<p class="sub">Safari + beacio 专用版</p>
-
-<div id="clipboardBanner" onclick="sendClipboardContent()">
-  📋 点击发送剪贴板内容
-</div>
+<p class="sub">Safari + beacio · 自动剪贴板发送</p>
 
 <div class="card">
-  <h2>连接</h2>
+  <h2>连接与监听</h2>
   <div class="row" style="margin-bottom:10px">
     <button id="btnConnect">扫描并连接 MysterBox</button>
     <button id="btnDisconnect" class="secondary" disabled>断开</button>
     <span id="connBadge" class="status-badge off">未连接</span>
   </div>
   <div id="deviceInfo" class="text-muted" style="margin-bottom:10px">设备信息：—</div>
-  <div id="logBox" class="log" style="margin-top:10px">日志就绪。</div>
+  
+  <!-- 监听开关 -->
+  <div class="row" style="margin-bottom:10px; background:#222; padding:10px; border-radius:8px;">
+    <span style="font-size:0.85rem; color:#ccc; flex:1;">切回 Safari 时自动发送剪贴板内容</span>
+    <button id="btnToggleListen" class="secondary" style="flex:0 0 auto; padding:6px 12px; font-size:0.8rem;">开启</button>
+    <span id="listenBadge" class="status-badge off" style="flex:0 0 auto;">已关闭</span>
+  </div>
+  
+  <div id="logBox" class="log">日志就绪。</div>
 </div>
 
 <div class="card" id="textCard" style="opacity:.5;pointer-events:none">
@@ -86,6 +85,7 @@
 </div>
 
 <script>
+// ================= 蓝牙常量与变量 =================
 const SVC_UUID      = '7a1d0001-3b6e-4f2a-9c4d-2e8f1a5b0c01';
 const CMD_UUID      = '7a1d0002-3b6e-4f2a-9c4d-2e8f1a5b0c01';
 const EVENT_UUID    = '7a1d0003-3b6e-4f2a-9c4d-2e8f1a5b0c01';
@@ -97,6 +97,11 @@ let cmdChar=null, eventChar=null, statusChar=null, transferChar=null;
 let mtu=23, screenW=368, screenH=448, connected=false;
 let uploadResolve=null, uploadReject=null;
 
+// 剪贴板监听状态
+let isListeningClipboard = false;
+let lastClipboardText = "";
+
+// ================= 日志 =================
 const logBox = document.getElementById('logBox');
 function log(msg, cls='') {
   const line = document.createElement('div');
@@ -106,11 +111,12 @@ function log(msg, cls='') {
   logBox.scrollTop = logBox.scrollHeight;
 }
 
+// ================= 连接逻辑 =================
 document.getElementById('btnConnect').addEventListener('click', connect);
 document.getElementById('btnDisconnect').addEventListener('click', disconnect);
 
 async function connect() {
-  if (!navigator.bluetooth) { log('蓝牙不可用，请确认 beacio 扩展已开启。', 'err'); return; }
+  if (!navigator.bluetooth) { log('蓝牙不可用，请确认 beacio 已开启。', 'err'); return; }
   try {
     log('正在扫描...', 'info');
     bleDevice = await navigator.bluetooth.requestDevice({ filters: [{ name: 'MysterBox' }], optionalServices: [SVC_UUID] });
@@ -135,6 +141,10 @@ async function connect() {
     connected = true;
     setUIConnected(true);
     log('连接成功！', 'ok');
+    
+    // 连接成功自动开启监听
+    if (!isListeningClipboard) toggleListen();
+    
   } catch(err) { log('连接失败：' + err.message, 'err'); }
 }
 
@@ -146,6 +156,7 @@ async function disconnect() {
 function onDisconnected() {
   connected = false;
   setUIConnected(false);
+  if (isListeningClipboard) toggleListen(); // 断开时自动关闭监听
   log('设备已断开。', 'err');
 }
 
@@ -160,6 +171,7 @@ function setUIConnected(state) {
   });
 }
 
+// ================= 蓝牙指令发送 =================
 async function writeCommand(bytes) {
   if (!connected || !cmdChar) throw new Error('未连接');
   await cmdChar.writeValueWithoutResponse(new Uint8Array(bytes));
@@ -182,6 +194,7 @@ document.getElementById('btnClearScreen').addEventListener('click', async () => 
   try { await writeCommand([0x02]); log('已清空', 'ok'); } catch(e) { log(e.message, 'err'); }
 });
 
+// 图片上传
 async function uploadFile(file, name) {
   const buffer = await file.arrayBuffer();
   const nameBytes = new TextEncoder().encode(name);
@@ -247,48 +260,64 @@ btnUpload.addEventListener('click', async () => {
   if(file) try { await uploadFile(file, 'img_' + Date.now() + '.jpg'); } catch(e) { log(e.message, 'err'); }
 });
 
-// ================= 剪贴板捕获机制 =================
-let lastClipboardText = "";
+// ================= 剪贴板自动发送逻辑 =================
+const btnToggleListen = document.getElementById('btnToggleListen');
+const listenBadge = document.getElementById('listenBadge');
 
-async function checkClipboard() {
+btnToggleListen.addEventListener('click', toggleListen);
+
+function toggleListen() {
   if (!connected) return;
-  try {
-    const text = await navigator.clipboard.readText();
-    // 如果剪贴板有新内容
-    if (text && text !== lastClipboardText) {
-      lastClipboardText = text;
-      // 在 Safari 中，有时可以在非用户操作下读取，但为了保险，弹个提示
-      const banner = document.getElementById('clipboardBanner');
-      banner.style.display = 'block';
-      banner.textContent = `📋 点击发送内容：${text.substring(0, 10)}...`;
-    }
-  } catch (err) {
-    // iOS 如果拒绝读取会抛错，忽略即可
+  isListeningClipboard = !isListeningClipboard;
+  
+  if (isListeningClipboard) {
+    btnToggleListen.textContent = '关闭';
+    listenBadge.textContent = '监听中';
+    listenBadge.className = 'status-badge on';
+    log('✅ 已开启剪贴板监听。切回 Safari 时会自动读取并发送。', 'ok');
+    // 开启时立刻检查一次
+    checkClipboard(true);
+  } else {
+    btnToggleListen.textContent = '开启';
+    listenBadge.textContent = '已关闭';
+    listenBadge.className = 'status-badge off';
+    log('已关闭剪贴板监听。', 'info');
   }
 }
 
-window.sendClipboardContent = async function() {
-  document.getElementById('clipboardBanner').style.display = 'none';
+// 检查并发送剪贴板
+async function checkClipboard(autoSend = false) {
+  if (!isListeningClipboard || !connected) return;
+  
   try {
+    // 注意：iOS 15+ 在非直接点击事件中读取剪贴板，会弹出系统的“粘贴”确认，这是正常现象。
     const text = await navigator.clipboard.readText();
-    if (text) {
-      // 简单的判断是不是网址
+    
+    // 如果剪贴板有内容，且和上次记录的不一样，就发送
+    if (text && text !== lastClipboardText) {
+      lastClipboardText = text;
+      
       if (text.startsWith('http') && (text.includes('.jpg') || text.includes('.png'))) {
-        log('剪贴板是图片链接，正在下载...', 'info');
+        log('检测到新剪贴板(图片链接)，正在下载...', 'info');
         const resp = await fetch(text);
         const blob = await resp.blob();
         await uploadFile(blob, 'url_' + Date.now() + '.jpg');
       } else {
+        log('检测到新剪贴板文字，自动发送...', 'info');
         await sendTextValue(text);
       }
     }
-  } catch(e) { log('剪贴板发送失败：' + e.message, 'err'); }
-};
+  } catch (err) {
+    // 如果用户在系统弹窗中点了“不允许”，就会进这里
+    console.log('读取剪贴板被拒绝或失败', err);
+  }
+}
 
-// Safari 切回前台时自动检测
+// 监听页面重新可见（切回 Safari）
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
-    setTimeout(checkClipboard, 300);
+    // 稍微延迟 300ms，确保 Safari 和蓝牙状态稳定
+    setTimeout(() => checkClipboard(true), 300);
   }
 });
 
