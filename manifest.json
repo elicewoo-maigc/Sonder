@@ -1,11 +1,9 @@
 {
   "name": "MysterBox 控制台",
-  "short_name": "MysterBox",
-  "description": "MysterBox 蓝牙文字与图片控制台",
+  "short_name": "Box控",
+  "description": "蓝牙低功耗文字与图片控制",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#0f0f0f",
   "theme_color": "#0f0f0f",
   "icons": [
